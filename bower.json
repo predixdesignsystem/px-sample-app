@@ -1,0 +1,38 @@
+{
+  "name": "px-sample-app",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "^1.9.0",
+    "px-app-nav": "^2.0.6",
+    "px-app-helpers": "^1.1.4",
+    "px-context-browser": "^2.0.4",
+    "px-tabs": "^2.0.0",
+    "px-key-value-pair": "^1.0.2",
+    "px-card": "^1.0.4",
+    "px-breadcrumbs": "^1.0.4",
+    "px-inbox": "^2.0.2",
+    "px-toggle": "^2.0.1",
+    "px-data-table": "^4.0.4",
+    "px-map": "^2.1.0",
+    "px-widget-cards": "^3.0.3",
+    "px-simple-bar-chart": "^2.0.2",
+    "px-theme": "^3.0.0",
+    "px-dark-theme": "^2.0.14",
+    "px-dark-demo-theme": "^2.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "^5.0.0",
+    "webcomponentsjs": "^0.7.0",
+    "px-demo": "^2.0.0",
+    "px-headings-design": "^1.0.3",
+    "px-forms-design": "^2.0.5",
+    "px-shadows-design": "^1.0.1",
+    "px-buttons-design": "^2.0.5",
+    "px-normalize-design": "^1.0.2",
+    "px-box-sizing-design": "^1.0.2",
+    "px-flexbox-design": "^1.0.2",
+    "px-spacing-design": "^1.0.2",
+    "px-helpers-design": "^1.0.3"
+  }
+}

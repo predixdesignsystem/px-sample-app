@@ -1,0 +1,6 @@
+{
+  "name": "px-sample-app",
+  "short_name": "px-sample-app",
+  "start_url": "/",
+  "display": "standalone"
+}

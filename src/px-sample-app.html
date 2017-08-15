@@ -1,0 +1,73 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../css/px-sample-app-styles.html" />
+<link rel="import" href="../bower_components/px-app-helpers/px-app-header/px-app-header.html" />
+<link rel="import" href="../bower_components/px-app-nav/px-app-nav.html" />
+<link rel="import" href="../bower_components/px-breadcrumbs/px-breadcrumbs.html" />
+<link rel="import" href="../bower_components/px-context-browser/px-context-browser.html" />
+<link rel="import" href="../bower_components/px-context-browser/px-context-browser-trigger.html" />
+<link rel="import" href="../bower_components/px-branding-bar/px-branding-bar.html" />
+<link rel="import" href="../bower_components/px-dropdown/px-dropdown.html" />
+<link rel="import" href="../bower_components/px-toggle/px-toggle.html" />
+
+<link rel="import" href="px-sample-layout.html" />
+<link rel="import" href="px-sample-dashboard.html" />
+<link rel="import" href="px-sample-inbox.html" />
+
+<!-- Load theme files, apply default theme -->
+<link rel="import" href="../bower_components/px-theme/px-theme-styles.html">
+
+<!-- Load dark theme files for later use  -->
+<link defer rel="import" href="../bower_components/px-dark-theme/px-dark-theme-styles.html">
+<link defer rel="import" href="../bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
+
+
+<dom-module id="px-sample-app">
+  <template>
+    <style include="px-theme-styles" is="custom-style"></style>
+    <style include="px-sample-app-styles"></style>
+
+    <px-branding-bar></px-branding-bar>
+    <px-app-nav slot="app-nav" selected-route="{{selected}}" vertical="{{vertical}}" collapse-all="{{collapsed}}" collapse-with-icon="{{collapsed}}"
+      items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Details","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'></px-app-nav>
+
+    <template is="dom-if" if="{{contextBrowser}}">
+      <div class$="shadow-navigation u-p flex flex--row {{getClass(vertical)}}">
+        <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
+        <px-context-browser open-trigger="[[openTrigger]]" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
+          selected-route='{{selectedRoute}}'></px-context-browser>
+        <px-breadcrumbs class="flex__item" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
+          selected-route='{{selectedRoute}}'></px-breadcrumbs>
+      </div>
+    </template>
+
+    <template is="dom-if" if="{{isEqual(selected,'tabs')}}">
+      <px-sample-layout class$="{{getClass(vertical)}}"></px-sample-layout>
+    </template>
+
+    <template is="dom-if" if="{{isEqual(selected,'dashboard')}}">
+      <px-sample-dashboard class$="{{getClass(vertical)}}"></px-sample-dashboard>
+    </template>
+
+    <template is="dom-if" if="{{isEqual(selected,'inbox')}}">
+      <px-sample-inbox class$="{{getClass(vertical)}}"></px-sample-inbox>
+    </template>
+
+    <div class="demo-controls flex flex--row flex--justify u-p">
+      <div>
+        <label>Navigation:</label>
+        <px-dropdown items='["Horizontal","Vertical","Collapsed"]' on-selected-changed="handleDropdownChanged" disable-clear select-by="val"
+          selected="Horizontal"></px-dropdown>
+      </div>
+      <div>
+        <label>Context Browser:</label>
+        <px-toggle on-checked-changed="handleCBToggle"></px-toggle>
+      </div>
+      <!--<div>
+        <label>Dark Theme:</label>
+        <px-toggle on-checked-changed="handleDTToggle"></px-toggle>
+      </div>-->
+    </div>
+
+  </template>
+</dom-module>
+<script src="px-sample-app.js"></script>

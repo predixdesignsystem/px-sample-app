@@ -1,0 +1,52 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../css/px-sample-app-styles.html" />
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-data-table/px-data-table.html" />
+<link rel="import" href="../bower_components/px-map/px-map.html" />
+<link rel="import" href="../bower_components/px-map/px-map-tile-layer.html" />
+<link rel="import" href="../bower_components/px-map/px-map-marker-symbol.html" />
+<link rel="import" href="../bower_components/px-widget-cards/px-twoup.html" />
+<link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
+<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+
+<dom-module id="px-sample-dashboard">
+  <template>
+    <style include="px-sample-app-styles"></style>
+    <div class="spine flex flex--row flex--wrap flex--justify">
+      <px-key-value-pair class="u-p" key="Total alerts" value="21" size="beta"></px-key-value-pair>
+      <px-key-value-pair class="u-p" key="Connected devices" value="583" size="beta"></px-key-value-pair>
+      <px-key-value-pair class="u-p" key="Utilization" value="89%" size="beta"></px-key-value-pair>
+      <px-key-value-pair class="u-p" key="Faults" value="3" size="beta"></px-key-value-pair>
+      <px-key-value-pair class="u-p" key="Output" value="53MW" size="beta"></px-key-value-pair>
+    </div>
+    <px-card header-text="Devices" icon="px-fea:asset">
+      <div class='actions'>
+        <px-icon icon='px-utl:app-settings'></px-icon>
+      </div>
+      <px-data-table table-data='[{"serial number":"8376487","status":"Online","model":"330M"},{"serial number":"7453746","status":"Offline","model":"300Z"},{"serial number":"5382685","status":"Error","model":"250R"},{"serial number":"6485639","status":"Online","model":"401A"},{"serial number":"5374836","status":"Online","model":"333T"}]'>
+      </px-data-table>
+    </px-card>
+    <px-card header-text="Assets by Location" icon="px-fea:analysis" full-bleed>
+      <div class='actions'>
+        <px-icon icon='px-utl:app-settings'></px-icon>
+      </div>
+      <px-map style="width:100%; height:300px;" zoom="8" lat="37.7749" lng="-122.4312" flex-to-size disable-scroll-zoom disable-touch-zoom>
+        <px-map-tile-layer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'></px-map-tile-layer>
+        <px-map-marker-symbol lat="37.7673626" lng="-121.9595048" type="info" icon="px-fea:asset"></px-map-marker-symbol>
+        <px-map-marker-symbol lat="37.6673626" lng="-121.5595048" type="warning" icon="px-fea:asset"></px-map-marker-symbol>
+        <px-map-marker-symbol lat="37.4673626" lng="-121.9595048" type="important" icon="px-fea:asset"></px-map-marker-symbol>
+      </px-map>
+    </px-card>
+    <px-twoup widget-header="Status" widget-icon="px-fea:alerts">
+      <div class="widget-1">
+        <px-simple-bar-chart chart-data='[ [112,57,53,122,128,120,56] ]' colors='["#E284B2"]' legend-labels='["Alerts, last 7 days"]'>
+        </px-simple-bar-chart>
+      </div>
+      <div class="widget-2">
+        <px-simple-bar-chart chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#6FC9FA"]' legend-labels='["Faults, last 7 days"]'>
+        </px-simple-bar-chart>
+      </div>
+    </px-twoup>
+  </template>
+</dom-module>
+<script src="px-sample-dashboard.js"></script>

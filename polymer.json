@@ -1,0 +1,21 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/px-sample-app.html",
+  "fragments": [
+    "src/px-sample-dashboard.html",
+    "src/px-sample-inbox.html",
+    "src/px-sample-layout.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ]
+  }
+}

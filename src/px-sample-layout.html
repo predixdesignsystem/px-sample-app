@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../css/px-sample-app-styles.html" />
+<link rel="import" href="../bower_components/px-tabs/px-tabs.html" />
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html" />
+<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+
+<dom-module id="px-sample-layout">
+  <template>
+    <style include="px-sample-app-styles"></style>
+    <div class="u-mh">
+      <px-tabs class="u-m+" selected="0">
+        <px-tab id='tab1'>Overview</px-tab>
+        <px-tab id='tab2'>Operations</px-tab>
+        <px-tab id='tab3'>Maintenance</px-tab>
+      </px-tabs>
+      <iron-pages class="u-mh+" selected="0">
+        <div>
+          <span class="heading--page">Asset #1</span>
+          <div class="flex flex--row flex--wrap flex--justify">
+            <px-key-value-pair class="u-mv" key="serial number" value="3827483"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="model" value="330Z"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="configuration" value="1a"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="status" value="Online"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="faults" value="0"></px-key-value-pair>
+          </div>
+          <div class="flex flex--row flex--wrap flex--justify">
+            <px-key-value-pair class="u-mv" key="output" value="3.2MW"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="uptime" value="98.8%"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="temperature" value="113º"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="speed" value="1500rpm"></px-key-value-pair>
+            <px-key-value-pair class="u-mv" key="orientation" value="Forward"></px-key-value-pair>
+          </div>
+          <span class="heading--subsection u-mv++">Add manual reading</span>
+          <label for="input1" class="u-mv+">Temperature</label>
+          <input id="input1" placeholder="Value" class="text-input input--small" type="text" />
+          <label for="input2" class="u-mv+">Speed</label>
+          <input id="input2" placeholder="Value" class="text-input input--small" type="text" />
+          <label for="input3" class="u-mv+">Output</label>
+          <input id="input3" placeholder="Value" class="text-input input--small" type="text" />
+          <button class="btn btn--call-to-action float--right">Add Reading</button>
+        </div>
+      </iron-pages>
+    </div>
+  </template>
+</dom-module>
+<script src="px-sample-layout.js"></script>
