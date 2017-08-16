@@ -13,17 +13,9 @@
 <link rel="import" href="px-sample-dashboard.html" />
 <link rel="import" href="px-sample-inbox.html" />
 
-<!-- Load theme files, apply default theme -->
-<link rel="import" href="../bower_components/px-theme/px-theme-styles.html">
-
-<!-- Load dark theme files for later use  -->
-<link defer rel="import" href="../bower_components/px-dark-theme/px-dark-theme-styles.html">
-<link defer rel="import" href="../bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
-
 
 <dom-module id="px-sample-app">
   <template>
-    <style include="px-theme-styles" is="custom-style"></style>
     <style include="px-sample-app-styles"></style>
 
     <px-branding-bar></px-branding-bar>
@@ -62,10 +54,10 @@
         <label>Context Browser:</label>
         <px-toggle on-checked-changed="handleCBToggle"></px-toggle>
       </div>
-      <!--<div>
+      <div>
         <label>Dark Theme:</label>
         <px-toggle on-checked-changed="handleDTToggle"></px-toggle>
-      </div>-->
+      </div>
     </div>
 
   </template>

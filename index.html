@@ -1,29 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Predix Sample Application</title>
-    <meta name="description" content="An example application showing how Predix Design System components work together in an application.">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+  <title>Predix Sample Application</title>
+  <meta name="description" content="An example application showing how Predix Design System components work together in an application.">
 
-    <!--
+  <!-- See https://goo.gl/OOhYW5 -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!--
       Fast bootstrapping of the webcomponents-lite library. Only loads the library
       if the browser doesn't natively support web components.
     -->
-    <script type="text/javascript">
-    (function() {
+  <script type="text/javascript">
+    (function () {
       'use strict';
 
-      var onload = function() {
+      var onload = function () {
         // For native Imports, manually fire WebComponentsReady so user code
         // can use the same code path for native and polyfill'd imports.
         if (!window.HTMLImports) {
           document.dispatchEvent(
-            new CustomEvent('WebComponentsReady', {bubbles: true})
+            new CustomEvent('WebComponentsReady', { bubbles: true })
           );
         }
       };
@@ -42,24 +43,52 @@
         onload();
       }
     })();
-    </script>
+  </script>
 
-    <link rel="import" href="/src/px-sample-app.html">
+   <!--
+      Load theme files, apply default theme.
+    -->
+    <link rel="import" href="/bower_components/px-theme/px-theme-styles.html">
+    <style include="px-theme-styles" is="custom-style"></style>
 
     <!--
+      Load dark theme files for later use. Stamp dynamic theme switcher, which
+      listens for theme update messages from the parent page and applies them.
+    -->
+    <link defer rel="import" href="/bower_components/px-dark-theme/px-dark-theme-styles.html">
+    <link defer rel="import" href="/bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
+    <link defer rel="import" href="/bower_components/px-demo/px-demo-theme-switcher.html"/>
+    <px-demo-theme-switcher-frame id="themeMessenger" origin="https://www.predix-ui.com"></px-demo-theme-switcher-frame>
+    <px-demo-theme-switcher id="themeSwitcher"></px-demo-theme-switcher>
+    <script>
+      (function(){
+        var messenger = document.getElementById('themeMessenger');
+        var switcher = document.getElementById('themeSwitcher');
+        messenger.addEventListener('is-dark-theme-changed', function(evt) {
+          switcher.isDarkTheme = evt.detail.value;
+        });
+      })();
+    </script>
+
+  <link rel="import" href="/src/px-sample-app.html">
+
+  <!--
       Basic page styles.
     -->
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 100vh;
-      }
-    </style>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+  </style>
 
-  </head>
-  <body>
-    <px-sample-app></px-sample-app>
-  </body>
+</head>
+
+<body>
+  <px-sample-app></px-sample-app>
+</body>
+
 </html>

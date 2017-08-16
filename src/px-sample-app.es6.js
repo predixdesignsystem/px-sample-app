@@ -51,7 +51,7 @@
       this.contextBrowser = e.detail.value;
     },
     handleDTToggle(e) {
-      // this.$.themeSwitcher.set('isDarkTheme', e.detail.value);
+      document.getElementById('themeSwitcher').set('isDarkTheme', e.detail.value);
     },
     getClass(vertical) {
       return vertical ? 'vertical' : '';
