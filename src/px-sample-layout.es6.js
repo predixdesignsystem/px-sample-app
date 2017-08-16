@@ -1,10 +1,5 @@
 (function() {
   Polymer({
-
-    is: 'px-sample-layout',
-
-    properties: {
-
-    }
+    is: 'px-sample-layout'
   });
 })();

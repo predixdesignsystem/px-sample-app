@@ -1,13 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<!-- Predix components used by this app view -->
 <link rel="import" href="../bower_components/px-tabs/px-tabs.html" />
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html" />
 <link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
 
 <dom-module id="px-sample-layout">
   <template>
     <style include="px-sample-app-styles"></style>
     <div class="u-mh">
+
+      <!-- Normally you would bind the selected properties of both px-tabs and iron-pages together,
+           so that a change of one would trigger a change of the other. In the case of this demo,
+           we didn't want to have to duplicate the detail view, so we made the first page always active. -->
+
       <px-tabs class="u-m+" selected="0">
         <px-tab id='tab1'>Overview</px-tab>
         <px-tab id='tab2'>Operations</px-tab>
@@ -38,6 +47,12 @@
           <label for="input3" class="u-mv+">Output</label>
           <input id="input3" placeholder="Value" class="text-input input--small" type="text" />
           <button class="btn btn--call-to-action float--right">Add Reading</button>
+        </div>
+        <div>
+          <!-- In a real situation where selected was bound, this would correspond to the "Operations" page -->
+        </div>
+        <div>
+          <!-- In a real situation where selected was bound, this would correspond to the "Maintenance" page -->
         </div>
       </iron-pages>
     </div>

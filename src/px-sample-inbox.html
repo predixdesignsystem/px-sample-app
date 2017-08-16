@@ -1,11 +1,20 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<!-- Predix components used in this app view -->
 <link rel="import" href="../bower_components/px-inbox/px-inbox.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
 
 <dom-module id="px-sample-inbox">
   <template>
     <style include="px-sample-app-styles"></style>
+
     <px-inbox on-selected-item-changed="_updateInboxDetails" list-items="{{listItems}}">
+
+      <!-- Any content passed inside of the px-inbox tag is automatically inserted into the right hand content side of the screen.
+           In this case, we create a mocked up detail view that is bound to the selections made in the px-inbox list on the left. -->
+
       <div class="inbox-details">
         <div class="heading--page flex flex--left">{{title}}</div>
         <div class="details">
@@ -55,7 +64,10 @@
           </div>
         </div>
       </div>
+      <!-- end of mock px-inbox detail view -->
+
     </px-inbox>
+
   </template>
 </dom-module>
 <script src="px-sample-inbox.js"></script>

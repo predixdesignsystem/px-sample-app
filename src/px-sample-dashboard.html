@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<!-- Predix components used by this app view -->
 <link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-data-table/px-data-table.html" />
 <link rel="import" href="../bower_components/px-map/px-map.html" />
@@ -9,9 +10,16 @@
 <link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
 <link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
 
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
+
 <dom-module id="px-sample-dashboard">
   <template>
     <style include="px-sample-app-styles"></style>
+
+    <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
+         we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
+
     <div class="spine flex flex--row flex--wrap flex--justify">
       <px-key-value-pair class="u-p" key="Total alerts" value="21" size="beta"></px-key-value-pair>
       <px-key-value-pair class="u-p" key="Connected devices" value="583" size="beta"></px-key-value-pair>
@@ -19,6 +27,9 @@
       <px-key-value-pair class="u-p" key="Faults" value="3" size="beta"></px-key-value-pair>
       <px-key-value-pair class="u-p" key="Output" value="53MW" size="beta"></px-key-value-pair>
     </div>
+
+    <!-- This first px-card uses a px-data-table to display information in a grid layout. -->
+
     <px-card header-text="Devices" icon="px-fea:asset">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
@@ -26,6 +37,9 @@
       <px-data-table table-data='[{"serial number":"8376487","status":"Online","model":"330M"},{"serial number":"7453746","status":"Offline","model":"300Z"},{"serial number":"5382685","status":"Error","model":"250R"},{"serial number":"6485639","status":"Online","model":"401A"},{"serial number":"5374836","status":"Online","model":"333T"}]'>
       </px-data-table>
     </px-card>
+
+    <!-- This second px-card uses the full-bleed property so that the px-map is displayed in a nice edge-to-edge format. -->
+
     <px-card header-text="Assets by Location" icon="px-fea:analysis" full-bleed>
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
@@ -37,6 +51,9 @@
         <px-map-marker-symbol lat="37.4673626" lng="-121.9595048" type="important" icon="px-fea:asset"></px-map-marker-symbol>
       </px-map>
     </px-card>
+
+    <!-- You can also use the 2-up, 3-up, 4-up, or 6-up from px-widget-cards to easily lay out information in a responsive grid within a card. -->
+
     <px-twoup widget-header="Status" widget-icon="px-fea:alerts">
       <div class="widget-1">
         <px-simple-bar-chart chart-data='[ [112,57,53,122,128,120,56] ]' colors='["#E284B2"]' legend-labels='["Alerts, last 7 days"]'>
@@ -47,6 +64,7 @@
         </px-simple-bar-chart>
       </div>
     </px-twoup>
+
   </template>
 </dom-module>
 <script src="px-sample-dashboard.js"></script>

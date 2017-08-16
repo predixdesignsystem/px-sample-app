@@ -36,6 +36,7 @@ $inuit-enable-btn--call-to-action : true;
 html, body {
   background-color: var(--px-base-background-color, white);
 }
+// The main content views of the px-sample-app
 px-sample-dashboard, px-sample-layout, px-sample-inbox {
   display: block;
   overflow: auto;
@@ -48,19 +49,26 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
     height: calc(100% - 120px);
   }
 }
+// Need to make sure that the app-nav shows up above everything else, especially when expanded.
+// Also note the difference in position between horizontal and vertical configurations.
+// You could either use absolute or fixed for the vertical configuration depending how many options you have
+// and whether you want it to scroll with the page or not.
 px-app-nav {
   z-index: 2;
   position: relative;
   &[vertical] {
-    position: absolute;
+    position: fixed;
   }
 }
+// Ensure that the px-key-value-pairs show up nicely in their flex container
 px-key-value-pair {
   min-width: 200px;
 }
+// Prevent the map from showing up on top of the px-app-nav and other components
 px-map {
   z-index: 0;
 }
+// Container for the px-context-browser and px-breadcrumbs to sit in
 .shadow-navigation {
   position: relative;
   z-index: 1;
@@ -70,6 +78,7 @@ px-map {
     padding-left: 70px !important;
   }
 }
+// An artifact of the demo, user controls for changing the nav orientation and theme
 .demo-controls {
   position: fixed;
   bottom: 0;
@@ -78,6 +87,7 @@ px-map {
   background: $gray16;
   z-index: 2;
 }
+// A mocked up "detail" view for the px-inbox
 .inbox-details {
   .heading--page, .details {
     padding: 2rem;
@@ -85,6 +95,8 @@ px-map {
     flex: 0 0 auto;
   }
 }
+// When px-app-nav is vertical, need to bump down by 30px to make room for px-branding-bar,
+// but px-branding-bar only shows up on larger screens
 @media(min-width: 720px) {
   px-app-nav[vertical] {
     top: 30px;
