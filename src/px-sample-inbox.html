@@ -2,6 +2,7 @@
 
 <!-- Predix components used in this app view -->
 <link rel="import" href="../bower_components/px-inbox/px-inbox.html" />
+<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -19,48 +20,20 @@
         <div class="heading--page flex flex--left">{{title}}</div>
         <div class="details">
           <span class="heading--section"><px-icon class="u-mr-" icon="px-fea:alerts"></px-icon>Alert Information</span>
-          <div class="flex u-mt">
-            <div class="flex__item">
-              <span class="label">Alert ID</span><br/>
-              <span class="value">{{alertId}}</span>
-            </div>
-            <div class="flex__item">
-              <span class="label">Alert Source</span><br/>
-              <span class="value">{{alertSource}}</span>
-            </div>
-          </div>
-          <div class="flex u-mt">
-            <div class="flex__item">
-              <span class="label">Received Date/Time</span><br/>
-              <span class="value">{{receivedDateTime}}</span>
-            </div>
-            <div class="flex__item">
-              <span class="label">Case Number</span><br/>
-              <span class="value">{{caseNumber}}</span>
-            </div>
+          <div class="flex flex--row flex--wrap flex--justify">
+              <px-key-value-pair class="u-mv" key="Alert ID" value="{{alertId}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="Alert Source" value="{{alertSource}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="Received Date/Time" value="{{receivedDateTime}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="Case Number" value="{{caseNumber}}"></px-key-value-pair>
           </div>
         </div>
         <div class="details">
           <span class="heading--section"><px-icon class="u-mr-" icon="px-fea:asset"></px-icon>Asset Information</span>
-          <div class="flex u-mt">
-            <div class="flex__item">
-              <span class="label">Customer</span><br/>
-              <span class="value">{{customer}}</span>
-            </div>
-            <div class="flex__item">
-              <span class="label">Serial Number</span><br/>
-              <span class="value">{{serialNumber}}</span>
-            </div>
-          </div>
-          <div class="flex u-mt">
-            <div class="flex__item">
-              <span class="label">DLN Type</span><br/>
-              <span class="value">{{dlnType}}</span>
-            </div>
-            <div class="flex__item">
-              <span class="label">Model</span><br/>
-              <span class="value">{{model}}</span>
-            </div>
+          <div class="flex flex--row flex--wrap flex--justify">
+              <px-key-value-pair class="u-mv" key="Customer" value="{{customer}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="Serial Number" value="{{serialNumber}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="DLN Type" value="{{dlnType}}"></px-key-value-pair>
+              <px-key-value-pair class="u-mv" key="Model" value="{{model}}"></px-key-value-pair>
           </div>
         </div>
       </div>

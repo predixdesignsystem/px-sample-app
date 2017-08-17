@@ -26,11 +26,11 @@
       },
       severity: {
         type: String,
-        value: 'GT240182'
+        value: 'important'
       },
       alertId: {
         type: String,
-        value: 'important'
+        value: '749581'
       },
       alertSource: {
         type: String,

@@ -42,11 +42,11 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
   overflow: auto;
   position: relative;
   width: 100%;
-  height: calc(100% - 180px);
+  height: calc(100% - 10rem);
   background-color: var(--px-base-background-color, white);
   &.vertical {
     padding-left: 60px;
-    height: calc(100% - 120px);
+    height: calc(100% - 8rem);
   }
 }
 // Need to make sure that the app-nav shows up above everything else, especially when expanded.
@@ -62,7 +62,7 @@ px-app-nav {
 }
 // Ensure that the px-key-value-pairs show up nicely in their flex container
 px-key-value-pair {
-  min-width: 200px;
+  min-width: 10rem;
 }
 // Prevent the map from showing up on top of the px-app-nav and other components
 px-map {
@@ -75,7 +75,7 @@ px-map {
   height: 60px;
   background-color: var(--px-card-background-color, white);
   &.vertical {
-    padding-left: 70px !important;
+    padding-left: 4.66667rem !important;
   }
 }
 // An artifact of the demo, user controls for changing the nav orientation and theme
@@ -86,6 +86,9 @@ px-map {
   height: 90px;
   background: $gray16;
   z-index: 2;
+  px-toggle {
+    margin-top: 0.3333rem;
+  }
 }
 // A mocked up "detail" view for the px-inbox
 .inbox-details {
@@ -99,7 +102,10 @@ px-map {
 // but px-branding-bar only shows up on larger screens
 @media(min-width: 720px) {
   px-app-nav[vertical] {
-    top: 30px;
+    top: 2rem;
+  }
+  px-sample-dashboard, px-sample-layout, px-sample-inbox {
+    height: calc(100% - 12rem);
   }
 }
 

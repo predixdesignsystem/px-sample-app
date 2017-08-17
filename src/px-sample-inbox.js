@@ -6,7 +6,7 @@
        * to bind data between the px-inbox list component and a mock
        * version of a detail view to mimic interactivity between the
        * two when a user selects something in px-inbox.
-       */title:{type:String,value:"CMS Cold Spot"},severity:{type:String,value:"GT240182"},alertId:{type:String,value:"important"},alertSource:{type:String,value:"Combustion"},receivedDateTime:{type:String,value:"2016-10-05T01:29"},caseNumber:{type:String,value:"127587937"},customer:{type:String,value:"Dorothy Vaughan"},serialNumber:{type:String,value:"GT769375"},dlnType:{type:String,value:"DLN 2.6"},model:{type:String,value:"7FA+e"}},/**
+       */title:{type:String,value:"CMS Cold Spot"},severity:{type:String,value:"important"},alertId:{type:String,value:"749581"},alertSource:{type:String,value:"Combustion"},receivedDateTime:{type:String,value:"2016-10-05T01:29"},caseNumber:{type:String,value:"127587937"},customer:{type:String,value:"Dorothy Vaughan"},serialNumber:{type:String,value:"GT769375"},dlnType:{type:String,value:"DLN 2.6"},model:{type:String,value:"7FA+e"}},/**
      * Binds data between the px-inbox list component and a mock
      * version of a detail view to mimic interactivity between the
      * two when a user selects something in px-inbox.
