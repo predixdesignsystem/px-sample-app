@@ -1,3 +1,7 @@
+v1.0.4
+===================
+* small tweaks for mobile
+
 v1.0.3
 ===================
 * update demo build to work with polymer build

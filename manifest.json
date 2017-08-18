@@ -2,5 +2,11 @@
   "name": "px-sample-app",
   "short_name": "px-sample-app",
   "start_url": "/",
-  "display": "standalone"
+  "display": "standalone",
+  "theme_color": "#007ACC",
+  "icons": [
+    {
+      "src": "favicon.ico"
+    }
+  ]
 }
