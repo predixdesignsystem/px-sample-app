@@ -2,8 +2,8 @@
     "name": "px-sample-app",
     "author": "General Electric",
     "description": "A Px component",
-    "version": "1.0.0",
-    "private": true,
+    "version": "1.0.1",
+    "private": false,
     "extName": null,
     "repository": {
         "type": "git",
