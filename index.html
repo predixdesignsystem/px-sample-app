@@ -9,7 +9,7 @@
   <meta name="description" content="An example application showing how Predix Design System components work together in an application.">
 
   <!-- See https://goo.gl/OOhYW5 -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
 
   <!--
       Fast bootstrapping of the webcomponents-lite library. Only loads the library
@@ -36,7 +36,7 @@
       if (!webComponentsSupported) {
         var script = document.createElement('script');
         script.async = true;
-        script.src = '../webcomponentsjs/webcomponents-lite.min.js';
+        script.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
         script.onload = onload;
         document.head.appendChild(script);
       } else {
@@ -48,16 +48,16 @@
    <!--
       Load theme files, apply default theme.
     -->
-    <link rel="import" href="/bower_components/px-theme/px-theme-styles.html">
+    <link rel="import" href="bower_components/px-theme/px-theme-styles.html">
     <style include="px-theme-styles" is="custom-style"></style>
 
     <!--
       Load dark theme files for later use. Stamp dynamic theme switcher, which
       listens for theme update messages from the parent page and applies them.
     -->
-    <link defer rel="import" href="/bower_components/px-dark-theme/px-dark-theme-styles.html">
-    <link defer rel="import" href="/bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
-    <link defer rel="import" href="/bower_components/px-demo/px-demo-theme-switcher.html"/>
+    <link defer rel="import" href="bower_components/px-dark-theme/px-dark-theme-styles.html">
+    <link defer rel="import" href="bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
+    <link defer rel="import" href="bower_components/px-demo/px-demo-theme-switcher.html"/>
     <px-demo-theme-switcher-frame id="themeMessenger" origin="https://www.predix-ui.com"></px-demo-theme-switcher-frame>
     <px-demo-theme-switcher id="themeSwitcher"></px-demo-theme-switcher>
     <script>
@@ -70,7 +70,7 @@
       })();
     </script>
 
-  <link rel="import" href="/src/px-sample-app.html">
+  <link rel="import" href="src/px-sample-app.html">
 
   <!--
       Basic page styles.
@@ -89,6 +89,35 @@
 
 <body>
   <px-sample-app></px-sample-app>
+
+  <!--
+      Attempt to register a service worker with the correct scope. Fail quietly
+      if this doesn't work, but log the result to the console.
+    -->
+    <script async type="text/javascript">
+      if ('serviceWorker' in navigator) {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          // Do not register for dev environments
+          console.log('Dev environment detected, skipping ServiceWorker registration.');
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            // Unregister any service workers that exist for this app
+            for (var i=0; i<registrations.length; i++) {
+              console.log('Unregistering existing service worker.');
+              registrations[i].unregister();
+            }
+          });
+        } else {
+          navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }).catch(function(err) {
+            // Registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        }
+      }
+    </script>
+
 </body>
 
 </html>

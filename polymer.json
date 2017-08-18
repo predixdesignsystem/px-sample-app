@@ -16,11 +16,23 @@
     "bower_components/px-dark-theme/px-dark-theme-styles.html",
     "bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html",
     "bower_components/px-demo/px-demo-theme-switcher.html",
-    "bower_components/px-demo/px-demo-theme-util.html"
+    "bower_components/px-demo/px-demo-theme-util.html",
+    "favicon.ico"
   ],
   "lint": {
     "rules": [
       "polymer-2-hybrid"
     ]
-  }
+  },
+  "builds": [
+    {
+      "preset": "es6-unbundled",
+      "name": "default",
+      "js": {"minify": false},
+      "css": {"minify": false},
+      "html": {"minify": false},
+      "browserCapabilities": ["es2015"],
+      "addPushManifest": false
+    }
+  ]
 }
