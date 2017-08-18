@@ -15,7 +15,8 @@
     "bower_components/px-theme/px-theme-styles.html",
     "bower_components/px-dark-theme/px-dark-theme-styles.html",
     "bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html",
-    "bower_components/px-demo/px-demo-theme-switcher.html"
+    "bower_components/px-demo/px-demo-theme-switcher.html",
+    "bower_components/px-demo/px-demo-theme-util.html"
   ],
   "lint": {
     "rules": [

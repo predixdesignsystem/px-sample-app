@@ -1,3 +1,7 @@
+v1.0.3
+===================
+* update demo build to work with polymer build
+
 v1.0.2
 ===================
 * exclude leaflet docs from build
