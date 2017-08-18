@@ -62,7 +62,7 @@ rm -f .jshintrc
 echo "{ \"directory\": \".\" }" > .bowerrc
 
 #make sure the deploy key isn't saved into the git repo
-echo "deploy_key" > .gitignore
+echo "deploy_key\nleaflet/docs/*" > .gitignore
 
 # add the redirect.
 # Note: We are not overwriting the component's documentation `index.html` file
