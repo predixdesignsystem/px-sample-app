@@ -46,7 +46,7 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
   height: calc(100% - 10rem);
   background-color: var(--px-base-background-color, white);
   &.vertical {
-    padding-left: 60px;
+    padding-left: 4rem;
     height: calc(100% - 8rem);
   }
 }
@@ -61,34 +61,26 @@ px-app-nav {
     position: fixed;
   }
 }
-// Ensure that the px-key-value-pairs show up nicely in their flex container
-px-key-value-pair {
-  min-width: 10rem;
-}
-// Prevent the map from showing up on top of the px-app-nav and other components
-px-map {
-  z-index: 0;
-}
 // Container for the px-context-browser and px-breadcrumbs to sit in
 .shadow-navigation {
   position: relative;
   z-index: 1;
-  height: 60px;
+  height: 4rem;
   background-color: var(--px-card-background-color, white);
   &.vertical {
     padding-left: 4.66667rem !important;
   }
 }
-// An artifact of the demo, user controls for changing the nav orientation and theme
-.demo-controls {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 90px;
-  background: $gray16;
-  z-index: 2;
-  px-toggle {
-    margin-top: 0.3333rem;
+// The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
+.spine {
+  background-color: var(--px-card-background-color, white);
+}
+// An artifact of the demo, a container we've created to layout a few dashboard elements
+.gaugeContainer {
+  width: 25%;
+  min-width: 18rem;
+  px-gauge {
+    height: 10rem;
   }
 }
 // A mocked up "detail" view for the px-inbox
@@ -97,6 +89,18 @@ px-map {
     padding: 2rem;
     border-bottom: 1px solid $gray3;
     flex: 0 0 auto;
+  }
+}
+// Another artifact of the demo, user controls for changing the nav orientation and theme
+.demo-controls {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 6rem;
+  background: $gray16;
+  z-index: 2;
+  px-toggle {
+    margin-top: 0.3333rem;
   }
 }
 // When px-app-nav is vertical, need to bump down by 30px to make room for px-branding-bar,
@@ -118,3 +122,4 @@ $inuit-enable-margins--large : true;
 $inuit-enable-margins--huge  : true;
 $inuit-enable-paddings       : true;
 @import "px-spacing-design/_trumps.spacing.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";

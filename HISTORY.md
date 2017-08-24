@@ -1,3 +1,7 @@
+v1.0.5
+===================
+* updated per design feedback
+
 v1.0.4
 ===================
 * small tweaks for mobile
