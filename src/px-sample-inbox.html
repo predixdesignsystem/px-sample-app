@@ -3,6 +3,9 @@
 <!-- Predix components used in this app view -->
 <link rel="import" href="../bower_components/px-inbox/px-inbox.html" />
 <link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-vis-radar/px-vis-radar.html" />
+<link rel="import" href="../bower_components/px-vis-polar/px-vis-polar.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -16,27 +19,55 @@
       <!-- Any content passed inside of the px-inbox tag is automatically inserted into the right hand content side of the screen.
            In this case, we create a mocked up detail view that is bound to the selections made in the px-inbox list on the left. -->
 
-      <div class="inbox-details">
-        <div class="heading--page flex flex--left">{{title}}</div>
-        <div class="details">
-          <span class="heading--section"><px-icon class="u-mr-" icon="px-fea:alerts"></px-icon>Alert Information</span>
-          <div class="flex flex--row flex--wrap flex--justify">
-              <px-key-value-pair class="u-mv" key="Alert ID" value="{{alertId}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="Alert Source" value="{{alertSource}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="Received Date/Time" value="{{receivedDateTime}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="Case Number" value="{{caseNumber}}"></px-key-value-pair>
-          </div>
+      <div class="heading--page u-p">{{title}}</div>
+      <div class="flex flex--wrap flex--justify u-p">
+        <span class="u-1/3-desk-and-up u-pr++ u-mb-">Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</span>
+        <div class="u-1/3-desk-and-up u-pr++ u-mb-">
+          <px-key-value-pair class="u-mv" key="Alert ID" value="{{alertId}}" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="u-mv" key="Alert Source" value="{{alertSource}}" size="delta"></px-key-value-pair>
         </div>
-        <div class="details">
-          <span class="heading--section"><px-icon class="u-mr-" icon="px-fea:asset"></px-icon>Asset Information</span>
-          <div class="flex flex--row flex--wrap flex--justify">
-              <px-key-value-pair class="u-mv" key="Customer" value="{{customer}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="Serial Number" value="{{serialNumber}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="DLN Type" value="{{dlnType}}"></px-key-value-pair>
-              <px-key-value-pair class="u-mv" key="Model" value="{{model}}"></px-key-value-pair>
-          </div>
+        <div class="u-1/3-desk-and-up u-pr++ u-mb-">
+          <px-key-value-pair class="u-mv" key="Received Date/Time" value="{{receivedDateTime}}" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="u-mv" key="Case Number" value="{{caseNumber}}" size="delta"></px-key-value-pair>
         </div>
       </div>
+      <div class="u-p">
+        <span class="heading--subsection">Customer Information</span>
+        <div class="flex flex--row flex--wrap flex--justify">
+          <px-key-value-pair class="u-mv" key="Customer" value="{{customer}}"></px-key-value-pair>
+          <px-key-value-pair class="u-mv" key="Contract Type" value="{{serialNumber}}"></px-key-value-pair>
+          <px-key-value-pair class="u-mv" key="DLN Type" value="{{dlnType}}"></px-key-value-pair>
+          <px-key-value-pair class="u-mv" key="Security" value="{{model}}"></px-key-value-pair>
+        </div>
+      </div>
+
+      <px-card header-text="Evidence 1" icon="px-fea:analytics">
+        <div class='actions'>
+          <px-icon icon='px-utl:app-settings'></px-icon>
+        </div>
+        <px-vis-radar
+          width="500"
+          height="500"
+          chart-data="[[chartData]]"
+          axes='["axis1","axis2","axis3","axis4","axis5"]'
+          series-key="timeStamp"
+          hide-axis-register>
+        </px-vis-radar>
+      </px-card>
+
+      <px-card header-text="Evidence 2" icon="px-fea:analytics">
+        <div class='actions'>
+          <px-icon icon='px-utl:app-settings'></px-icon>
+        </div>
+        <px-vis-polar
+          width="500"
+          height="500"
+          chart-data="[[chartData2]]"
+          series-config="[[seriesConfig]]"
+          hide-register
+          use-degrees>
+        </px-vis-polar>
+      </px-card>
       <!-- end of mock px-inbox detail view -->
 
     </px-inbox>

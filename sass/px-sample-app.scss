@@ -34,7 +34,7 @@ $inuit-enable-btn--call-to-action : true;
 
 // Component
 html, body {
-  background-color: var(--px-base-background-color, white);
+  background-color: var(--px-base-background-color);
 }
 // The main content views of the px-sample-app
 px-sample-dashboard, px-sample-layout, px-sample-inbox {
@@ -44,11 +44,16 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
   position: relative;
   width: 100%;
   height: calc(100% - 10rem);
-  background-color: var(--px-base-background-color, white);
   &.vertical {
     padding-left: 4rem;
     height: calc(100% - 8rem);
   }
+}
+px-sample-dashboard, px-sample-inbox {
+  background-color: var(--px-base-background-color);
+}
+px-sample-layout {
+  background-color: var(--px-card-background-color);
 }
 // Need to make sure that the app-nav shows up above everything else, especially when expanded.
 // Also note the difference in position between horizontal and vertical configurations.
@@ -61,19 +66,23 @@ px-app-nav {
     position: fixed;
   }
 }
+// Set height of px-inbox to fully fill parent view
+px-inbox {
+  --px-inbox-height: 100%;
+}
 // Container for the px-context-browser and px-breadcrumbs to sit in
 .shadow-navigation {
   position: relative;
   z-index: 1;
-  height: 4rem;
-  background-color: var(--px-card-background-color, white);
+  height: 2rem;
+  background-color: var(--px-card-background-color);
   &.vertical {
     padding-left: 4.66667rem !important;
   }
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
 .spine {
-  background-color: var(--px-card-background-color, white);
+  background-color: var(--px-card-background-color);
 }
 // An artifact of the demo, a container we've created to layout a few dashboard elements
 .gaugeContainer {
@@ -81,14 +90,6 @@ px-app-nav {
   min-width: 18rem;
   px-gauge {
     height: 10rem;
-  }
-}
-// A mocked up "detail" view for the px-inbox
-.inbox-details {
-  .heading--page, .details {
-    padding: 2rem;
-    border-bottom: 1px solid $gray3;
-    flex: 0 0 auto;
   }
 }
 // Another artifact of the demo, user controls for changing the nav orientation and theme
@@ -121,5 +122,6 @@ $inuit-enable-margins--small : true;
 $inuit-enable-margins--large : true;
 $inuit-enable-margins--huge  : true;
 $inuit-enable-paddings       : true;
+$inuit-enable-paddings--huge : true;
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";

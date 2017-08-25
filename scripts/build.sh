@@ -43,7 +43,7 @@
 # 1. This file should be saved in your project as `scripts/build.sh`.
 # 2. Run `yarn install` or `npm install` (your choice)
 # 3. Run `bower install`
-# 4. Run `./scripts/build.sh`
+# 4. Run `./scripts/build.sh` or `npm run build`
 # ------------------------------------------------------------------------------
 
 # Find repo name from the bower file
@@ -55,8 +55,13 @@ echo "Starting build for $REPO_NAME"
 ./node_modules/.bin/bower install px-theme px-dark-theme px-dark-demo-theme
 
 # Run polymer build to transpile code. The output will be placed in the
-# `build/unbundled` directory
+# `build/default` directory
 ./node_modules/.bin/polymer build
+
+# For some reason polymer build is not picking up these files, even though they are in the
+# polymer.json file as extraDependencies - manually copying until we can find a fix
+cp bower_components/px-vis/px-vis-worker.js build/default/bower_components/px-vis/
+cp bower_components/px-vis/px-vis-worker-scale.js build/default/bower_components/px-vis/
 
 echo ""
 echo "================================================"

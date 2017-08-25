@@ -2,7 +2,6 @@
 
 <!-- Predix components used by this app view -->
 <link rel="import" href="../bower_components/px-card/px-card.html" />
-<link rel="import" href="../bower_components/px-data-table/px-data-table.html" />
 <link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
 <link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
 <link rel="import" href="../bower_components/px-gauge/px-gauge.html" />
@@ -32,7 +31,7 @@
 
     <!-- This first px-card contains 4 kpis with bar charts and 4 gauges -->
 
-    <px-card header-text="Productivity Details" icon="px-fea:alerts">
+    <px-card header-text="Productivity Details" icon="px-fea:alerts" style="--px-card-background-color: white;">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
@@ -42,45 +41,35 @@
             <px-key-value-pair key="Measured Output" value="110MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [112,57,53,122,128,120,56] ]' colors='["#6FC9FA"]'></px-simple-bar-chart>
           </div>
-          <px-gauge value="85" unit="%" error='[[0,15]]' normal='[[15,100]]' bar-width="20"></px-gauge>
+          <px-gauge value="85" unit="%" error='[ [0,15] ]' normal='[ [15,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
             <px-key-value-pair key="Measured Output" value="15MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#6FC9FA"]'></px-simple-bar-chart>
           </div>
-          <px-gauge value="10" unit="%" error='[[0,15]]' normal='[[15,100]]' bar-width="20"></px-gauge>
+          <px-gauge value="10" unit="%" error='[ [0,15] ]' normal='[ [15,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
             <px-key-value-pair key="Measured Output" value="121MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#6FC9FA"]'></px-simple-bar-chart>
           </div>
-          <px-gauge value="65" unit="%" error='[[0,15]]' normal='[[15,100]]' bar-width="20"></px-gauge>
+          <px-gauge value="65" unit="%" error='[ [0,15] ]' normal='[ [15,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
             <px-key-value-pair key="Measured Output" value="98MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#6FC9FA"]'></px-simple-bar-chart>
           </div>
-          <px-gauge value="90" unit="%" error='[[0,15]]' normal='[[15,100]]' bar-width="20"></px-gauge>
+          <px-gauge value="90" unit="%" error='[ [0,15] ]' normal='[ [15,100] ]' bar-width="20"></px-gauge>
         </div>
       </div>
     </px-card>
 
-    <!-- This second px-card uses a px-data-table to display information in a grid layout. -->
+    <!-- This last px-card includes a px-vis-timeseries chart. -->
 
-    <px-card class="light" header-text="Fleet" icon="px-obj:steam-turbine">
-      <div class='actions'>
-        <px-icon icon='px-utl:app-settings'></px-icon>
-      </div>
-      <px-data-table table-data='[[tableData]]'>
-      </px-data-table>
-    </px-card>
-
-    <!-- Finally, this last px-card includes a px-vis-timeseries chart. -->
-
-    <px-card class="light" header-text="Performance Over Time" icon="px-fea:orchestration">
+    <px-card header-text="Performance Over Time" icon="px-fea:orchestration">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
@@ -97,7 +86,6 @@
         x-axis-config='{"title":"Date"}'
         y-axis-config='{"title":"Temperature","titleTruncation":false,"unit":"C","axis1":{"title":"Temperature","titleTruncation":false,"unit":"C"}}'>
       </px-vis-timeseries>
-
     </px-card>
 
   </template>

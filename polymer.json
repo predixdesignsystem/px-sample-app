@@ -17,6 +17,8 @@
     "bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html",
     "bower_components/px-demo/px-demo-theme-switcher.html",
     "bower_components/px-demo/px-demo-theme-util.html",
+    "bower_components/px-vis/px-vis-worker.js",
+    "bower_components/px-vis/px-vis-worker-scale.js",
     "favicon.ico"
   ],
   "lint": {

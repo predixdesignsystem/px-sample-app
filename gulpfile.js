@@ -100,7 +100,7 @@ gulp.task('serve', function() {
 
   gulp.watch(ES6_SRC, ['transpile']);
   gulp.watch(['sass/*.scss'], ['sass']);
-  gulp.watch(['css/*-styles.html', '*.html', `${ES5_DEST}/*.js`, 'demo/*.html']).on('change', browserSync.reload);
+  gulp.watch(['css/*-styles.html', 'src/*.html', `${ES5_DEST}/*.js`]).on('change', browserSync.reload);
 });
 
 gulp.task('bump:patch', function(){
