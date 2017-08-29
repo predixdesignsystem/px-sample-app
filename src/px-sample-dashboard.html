@@ -5,6 +5,7 @@
 <link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
 <link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
 <link rel="import" href="../bower_components/px-gauge/px-gauge.html" />
+<link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
 
 <!-- Load styles -->
@@ -31,7 +32,7 @@
 
     <!-- This first px-card contains 4 kpis with bar charts and 4 gauges -->
 
-    <px-card header-text="Productivity Details" icon="px-fea:alerts" style="--px-card-background-color: white;">
+    <px-card class="medium-card" header-text="Productivity Details" icon="px-fea:alerts" style="--px-card-background-color: white;">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
@@ -68,8 +69,7 @@
     </px-card>
 
     <!-- This last px-card includes a px-vis-timeseries chart. -->
-
-    <px-card header-text="Performance Over Time" icon="px-fea:orchestration">
+    <px-card class="light-card" header-text="Performance Over Time" icon="px-fea:orchestration">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>

@@ -1,3 +1,7 @@
+v1.0.8
+===================
+* simplify theming greatly
+
 v1.0.7
 ===================
 * pull in radar chart fix

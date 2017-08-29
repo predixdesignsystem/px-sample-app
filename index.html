@@ -47,30 +47,11 @@
     })();
   </script>
 
-   <!--
-      Load theme files, apply default theme.
-    -->
-    <link rel="import" href="bower_components/px-theme/px-theme-styles.html">
-    <style include="px-theme-styles" is="custom-style"></style>
-
-    <!--
-      Load dark theme files for later use. Stamp dynamic theme switcher, which
-      listens for theme update messages from the parent page and applies them.
-    -->
-    <link defer rel="import" href="bower_components/px-dark-theme/px-dark-theme-styles.html">
-    <link defer rel="import" href="bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html">
-    <link defer rel="import" href="bower_components/px-demo/px-demo-theme-switcher.html"/>
-    <px-demo-theme-switcher-frame id="themeMessenger" origin="https://www.predix-ui.com"></px-demo-theme-switcher-frame>
-    <px-demo-theme-switcher id="themeSwitcher"></px-demo-theme-switcher>
-    <script>
-      (function(){
-        var messenger = document.getElementById('themeMessenger');
-        var switcher = document.getElementById('themeSwitcher');
-        messenger.addEventListener('is-dark-theme-changed', function(evt) {
-          switcher.isDarkTheme = evt.detail.value;
-        });
-      })();
-    </script>
+  <!--
+    Load theme files, apply default theme.
+  -->
+  <link rel="import" href="bower_components/px-theme/px-theme-styles.html">
+  <style include="px-theme-styles" is="custom-style"></style>
 
   <link rel="import" href="src/px-sample-app.html">
 

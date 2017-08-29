@@ -7,7 +7,6 @@
 <link rel="import" href="../bower_components/px-context-browser/px-context-browser-trigger.html" />
 <link rel="import" href="../bower_components/px-branding-bar/px-branding-bar.html" />
 <link rel="import" href="../bower_components/px-dropdown/px-dropdown.html" />
-<link rel="import" href="../bower_components/px-toggle/px-toggle.html" />
 
 <!-- Views used by the app -->
 <link rel="import" href="px-sample-layout.html" />
@@ -28,10 +27,8 @@
          Use the application-title property to override. -->
 
     <px-branding-bar></px-branding-bar>
-    <px-app-nav slot="app-nav" selected-route="{{selected}}" vertical="{{vertical}}" collapse-all="{{collapsed}}" collapse-with-icon="{{collapsed}}"
+    <px-app-nav slot="app-nav" selected-route="{{selected}}"
       items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Details","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'></px-app-nav>
-
-    <template is="dom-if" if="{{contextBrowser}}">
 
       <!-- The px-context-browser and px-breadcrumbs can be used in combination to provide both the traditional drilldown navigation
            as well as an interactive breadcrumb for quick navigation throughout the hierarchy. Place them both in a flex--row so that
@@ -44,40 +41,24 @@
         <px-breadcrumbs class="flex__item" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
           selected-route='{{selectedRoute}}'></px-breadcrumbs>
       </div>
-    </template>
 
     <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
          Alternatively, you could use px-app-route to instead bind px-app-nav to the browser's URL bar for more complex page routing. -->
 
     <template is="dom-if" if="{{isEqual(selected,'tabs')}}">
-      <px-sample-layout class$="{{getClass(vertical)}}"></px-sample-layout>
+      <px-sample-layout></px-sample-layout>
     </template>
 
     <template is="dom-if" if="{{isEqual(selected,'dashboard')}}">
-      <px-sample-dashboard class$="{{getClass(vertical)}}"></px-sample-dashboard>
+      <px-sample-dashboard></px-sample-dashboard>
     </template>
 
     <template is="dom-if" if="{{isEqual(selected,'inbox')}}">
-      <px-sample-inbox class$="{{getClass(vertical)}}"></px-sample-inbox>
+      <px-sample-inbox></px-sample-inbox>
     </template>
 
-    <!-- This section is simply an artifact of the demo, and not necessary in your application.
-         They allow users to explore the various navigation configurations, use of dark theme, etc. -->
-
-    <div class="demo-controls flex flex--row flex--justify u-p">
-      <div>
-        <label>Navigation:</label>
-        <px-dropdown items='["Horizontal","Vertical","Collapsed"]' on-selected-changed="handleDropdownChanged" disable-clear select-by="val"
-          selected="Horizontal"></px-dropdown>
-      </div>
-      <div>
-        <label>Context Browser:</label>
-        <px-toggle on-checked-changed="handleCBToggle"></px-toggle>
-      </div>
-      <div>
-        <label>Dark Theme:</label>
-        <px-toggle on-checked-changed="handleDTToggle"></px-toggle>
-      </div>
+    <div class="footer flex flex--left flex--middle u-p">
+      <a class="actionable" href="https://github.com/PredixDev/px-sample-app" target="_blank">Get the code for this sample application on GitHub</a>
     </div>
 
   </template>

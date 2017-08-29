@@ -31,6 +31,7 @@ $inuit-enable-input--small    : true;
 @import "px-shadows-design/_objects.shadows.scss";
 $inuit-enable-btn--call-to-action : true;
 @import 'px-buttons-design/_objects.buttons.scss';
+@import 'px-actionable-design/_objects.actionable.scss';
 
 // Component
 html, body {
@@ -44,10 +45,11 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
   position: relative;
   width: 100%;
   height: calc(100% - 10rem);
-  &.vertical {
-    padding-left: 4rem;
-    height: calc(100% - 8rem);
-  }
+  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your views.
+  // &.vertical {
+  //   padding-left: 4rem;
+  //   height: calc(100% - 8rem);
+  // }
 }
 px-sample-dashboard, px-sample-inbox {
   background-color: var(--px-base-background-color);
@@ -56,12 +58,11 @@ px-sample-layout {
   background-color: var(--px-card-background-color);
 }
 // Need to make sure that the app-nav shows up above everything else, especially when expanded.
-// Also note the difference in position between horizontal and vertical configurations.
-// You could either use absolute or fixed for the vertical configuration depending how many options you have
-// and whether you want it to scroll with the page or not.
 px-app-nav {
   z-index: 2;
   position: relative;
+  // You could either use absolute or fixed for the vertical configuration depending how many options you have
+  // and whether you want it to scroll with the page or not.
   &[vertical] {
     position: fixed;
   }
@@ -76,9 +77,10 @@ px-inbox {
   z-index: 1;
   height: 2rem;
   background-color: var(--px-card-background-color);
-  &.vertical {
-    padding-left: 4.66667rem !important;
-  }
+  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your CB
+  // &.vertical {
+  //   padding-left: 4.66667rem !important;
+  // }
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
 .spine {
@@ -88,25 +90,23 @@ px-inbox {
 .gaugeContainer {
   width: 25%;
   min-width: 18rem;
-  px-gauge {
-    height: 10rem;
-  }
 }
-// Another artifact of the demo, user controls for changing the nav orientation and theme
-.demo-controls {
+// A footer for the demo
+.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 6rem;
+  height: 4rem;
   background: $gray16;
   z-index: 2;
-  px-toggle {
-    margin-top: 0.3333rem;
-  }
 }
-// When px-app-nav is vertical, need to bump down by 30px to make room for px-branding-bar,
-// but px-branding-bar only shows up on larger screens
+// Some cards should have a white background so they stand out better
+.light-card {
+  --px-card-background-color: white;
+}
 @media(min-width: 720px) {
+  // When px-app-nav is vertical, you need to bump it down by 30px to make room for px-branding-bar,
+  // but px-branding-bar only shows up on larger screens
   px-app-nav[vertical] {
     top: 2rem;
   }
