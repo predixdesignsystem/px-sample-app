@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+<link rel="import" href="../bower_components/px-theme/px-theme-styles.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<dom-module id="px-sample-spine">
+  <template>
+    <style include="px-theme-styles px-sample-app-styles"></style>
+
+    <div class="spine u-pt">
+      <span class="heading--page u-p">West Coast Fleet</span>
+
+      <div class="flex flex--wrap flex--justify">
+        <px-key-value-pair class="u-p" key="Total alerts" value="21" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Connected devices" value="583" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Utilization" value="89%" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Faults" value="3" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Output" value="53MW" size="beta"></px-key-value-pair>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'px-sample-spine'
+    });
+  </script>
+</dom-module>

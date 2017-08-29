@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/px-theme/px-theme-styles.html" />
+<link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
+
+<dom-module id="px-vis-card">
+  <template>
+  <style include="px-theme-styles"></style>
+
+
+    <px-card header-text="Performance Over Time" icon="px-fea:orchestration">
+      <div class='actions'>
+        <px-icon icon='px-utl:app-settings'></px-icon>
+      </div>
+      <px-vis-timeseries
+        debounce-resize-timing="250"
+        width="700"
+        height="300"
+        chart-horizontal-alignment="center"
+        chart-vertical-alignment="center"
+        register-config='{"type":"horizontal"}'
+        chart-data="[[chartData]]"
+        series-config='{"y0":{"name":"y0","x":"timeStamp","y":"y0","yAxisUnit":"F","axis":{"id":"axis1","side":"left","number":"1"}},"y1":{"name":"y1","x":"timeStamp","y":"y1","yAxisUnit":"Hz","axis":{"id":"axis2","side":"right","number":"1"}},"y2":{"name":"y2","x":"timeStamp","y":"y2","yAxisUnit":"C","axis":{"id":"axis3","side":"left","number":"2"}},"y3":{"name":"y3","x":"timeStamp","y":"y3","yAxisUnit":"F","axis":{"id":"axis4","side":"right","number":"2"}}}'
+        chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}'
+        x-axis-config='{"title":"Date"}'
+        y-axis-config='{"title":"Temperature","titleTruncation":false,"unit":"C","axis1":{"title":"Temperature","titleTruncation":false,"unit":"C"}}'>
+      </px-vis-timeseries>
+    </px-card>
+
+  </template>
+</dom-module>
+<script src="px-vis-card.js"></script>

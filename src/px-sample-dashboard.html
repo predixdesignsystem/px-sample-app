@@ -3,9 +3,9 @@
 <!-- Predix components used by this app view -->
 <link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
-<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
 <link rel="import" href="../bower_components/px-gauge/px-gauge.html" />
-<link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
+<link rel="import" href="px-sample-spine.html" />
+<link rel="import" href="px-vis-card.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -16,20 +16,8 @@
 
     <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
          we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
-
-    <div class="spine u-pt">
-      <span class="heading--page u-p">West Coast Fleet</span>
-
-      <div class="flex flex--wrap flex--justify">
-        <px-key-value-pair class="u-p" key="Total alerts" value="21" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Connected devices" value="583" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Utilization" value="89%" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Faults" value="3" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Output" value="53MW" size="beta"></px-key-value-pair>
-      </div>
-    </div>
-
     <!-- This first px-card contains 4 kpis with bar charts and 4 gauges -->
+    <px-sample-spine></px-sample-spine>
 
     <px-card header-text="Productivity Details" icon="px-fea:alerts" style="--px-card-background-color: white;">
       <div class='actions'>
@@ -68,25 +56,7 @@
     </px-card>
 
     <!-- This last px-card includes a px-vis-timeseries chart. -->
-
-    <px-card header-text="Performance Over Time" icon="px-fea:orchestration">
-      <div class='actions'>
-        <px-icon icon='px-utl:app-settings'></px-icon>
-      </div>
-      <px-vis-timeseries
-        debounce-resize-timing="250"
-        width="700"
-        height="300"
-        chart-horizontal-alignment="center"
-        chart-vertical-alignment="center"
-        register-config='{"type":"horizontal"}'
-        chart-data="[[chartData]]"
-        series-config='{"y0":{"name":"y0","x":"timeStamp","y":"y0","yAxisUnit":"F","axis":{"id":"axis1","side":"left","number":"1"}},"y1":{"name":"y1","x":"timeStamp","y":"y1","yAxisUnit":"Hz","axis":{"id":"axis2","side":"right","number":"1"}},"y2":{"name":"y2","x":"timeStamp","y":"y2","yAxisUnit":"C","axis":{"id":"axis3","side":"left","number":"2"}},"y3":{"name":"y3","x":"timeStamp","y":"y3","yAxisUnit":"F","axis":{"id":"axis4","side":"right","number":"2"}}}'
-        chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}'
-        x-axis-config='{"title":"Date"}'
-        y-axis-config='{"title":"Temperature","titleTruncation":false,"unit":"C","axis1":{"title":"Temperature","titleTruncation":false,"unit":"C"}}'>
-      </px-vis-timeseries>
-    </px-card>
+    <px-vis-card></px-vis-card>
 
   </template>
 </dom-module>

@@ -1,6 +1,6 @@
 (function () {
   Polymer({
-    is: 'px-sample-dashboard',
+    is: 'px-vis-card',
     properties: {
       chartData: {
         type: Array,
