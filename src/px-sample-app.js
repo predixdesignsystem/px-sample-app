@@ -13,7 +13,9 @@
        */collapsed:{type:Boolean,value:false},/**
        * Whether to display the px-context-browser.
        * @property contextBrowser
-       */contextBrowser:{type:Boolean,value:false}},/**
+       */contextBrowser:{type:Boolean,value:false},/**
+       * Which theme is currently active: 'light' or 'dark'
+       */theme:{type:String,value:"light"}},/**
      * Used by the dom-if to test equality.
      * @param {Array} route
      * @param {String} string

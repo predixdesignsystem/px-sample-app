@@ -1,3 +1,7 @@
+v1.0.7
+===================
+* pull in radar chart fix
+
 v1.0.6
 ===================
 * updated per design feedback

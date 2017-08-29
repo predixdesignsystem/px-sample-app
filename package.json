@@ -2,7 +2,7 @@
     "name": "px-sample-app",
     "author": "General Electric",
     "description": "A simple example of a Predix Design System application",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "private": false,
     "extName": null,
     "repository": {

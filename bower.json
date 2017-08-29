@@ -1,6 +1,6 @@
 {
   "name": "px-sample-app",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.html",
   "dependencies": {
     "polymer": "^1.9.0",

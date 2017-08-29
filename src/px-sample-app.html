@@ -37,7 +37,7 @@
            as well as an interactive breadcrumb for quick navigation throughout the hierarchy. Place them both in a flex--row so that
            they appear next to each other in a container. -->
 
-      <div class$="shadow-navigation u-ph flex flex--row {{getClass(vertical)}}">
+      <div class$="context-browser shadow-navigation u-ph flex flex--row {{getClass(vertical)}}">
         <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
         <px-context-browser open-trigger="[[openTrigger]]" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
           selected-route='{{selectedRoute}}'></px-context-browser>

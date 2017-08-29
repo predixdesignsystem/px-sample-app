@@ -47,6 +47,13 @@
       contextBrowser: {
         type: Boolean,
         value: false
+      },
+      /**
+       * Which theme is currently active: 'light' or 'dark'
+       */
+      theme: {
+        type: String,
+        value: 'light'
       }
     },
     /**
