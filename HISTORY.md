@@ -1,3 +1,7 @@
+v1.0.9
+===================
+* design feedback changes
+
 v1.0.8
 ===================
 * simplify theming greatly
