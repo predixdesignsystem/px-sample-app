@@ -44,8 +44,7 @@ px-sample-dashboard, px-sample-layout, px-sample-inbox {
   -webkit-overflow-scrolling: touch;
   position: relative;
   width: 100%;
-  height: calc(100% - 10rem);
-  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your views.
+  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your views
   // &.vertical {
   //   padding-left: 4rem;
   //   height: calc(100% - 8rem);
@@ -57,25 +56,25 @@ px-sample-dashboard, px-sample-inbox {
 px-sample-layout {
   background-color: var(--px-card-background-color);
 }
-// Need to make sure that the app-nav shows up above everything else, especially when expanded.
+// Need to make sure that the app-nav shows up above everything else, especially when expanded
 px-app-nav {
   z-index: 2;
   position: relative;
   // You could either use absolute or fixed for the vertical configuration depending how many options you have
   // and whether you want it to scroll with the page or not.
-  &[vertical] {
-    position: fixed;
-  }
+  // &[vertical] {
+  //   position: fixed;
+  // }
 }
 // Set height of px-inbox to fully fill parent view
 px-inbox {
-  --px-inbox-height: 100%;
+  --px-inbox-height: 87vh;
 }
 // Container for the px-context-browser and px-breadcrumbs to sit in
 .context-browser {
   position: relative;
   z-index: 1;
-  height: 2rem;
+  height: 2.4rem;
   background-color: var(--px-card-background-color);
   // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your CB
   // &.vertical {
@@ -88,17 +87,36 @@ px-inbox {
 }
 // An artifact of the demo, a container we've created to layout a few dashboard elements
 .gaugeContainer {
-  width: 25%;
-  min-width: 18rem;
+  width: 20%;
+  min-width: 16rem;
+  px-gauge {
+    flex: 0 1 12rem;
+  }
+}
+.gauge1 {
+  --px-gauge-fill-normal-color: $blue5;
+}
+.gauge2 {
+  --px-gauge-fill-normal-color: $green5;
+}
+.gauge3 {
+  --px-gauge-fill-normal-color: $purple5;
+}
+.gauge4 {
+  --px-gauge-fill-normal-color: $orange5;
+}
+px-vis-timeseries {
+  --px-vis-series-color-0: $blue5;
+  --px-vis-series-color-1: $green5;
+  --px-vis-series-color-2: $purple5;
+  --px-vis-series-color-3: $orange5;
 }
 // A footer for the demo
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   background: $gray16;
-  z-index: 2;
 }
 // Some cards should have a white background so they stand out better
 .light-card {
@@ -107,11 +125,11 @@ px-inbox {
 @media(min-width: 720px) {
   // When px-app-nav is vertical, you need to bump it down by 30px to make room for px-branding-bar,
   // but px-branding-bar only shows up on larger screens
-  px-app-nav[vertical] {
-    top: 2rem;
-  }
-  px-sample-dashboard, px-sample-layout, px-sample-inbox {
-    height: calc(100% - 12rem);
+  // px-app-nav[vertical] {
+  //   top: 2rem;
+  // }
+  px-inbox {
+    --px-inbox-height: 84.7vh;
   }
 }
 

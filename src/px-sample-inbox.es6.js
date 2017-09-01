@@ -226,6 +226,6 @@
       this.set("serialNumber", inboxItem.serialNumber);
       this.set("dlnType", inboxItem.dlnType);
       this.set("model", inboxItem.model);
-    },
+    }
   });
 })();

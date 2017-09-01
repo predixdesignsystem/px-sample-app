@@ -5,8 +5,8 @@
 <link rel="import" href="../bower_components/px-breadcrumbs/px-breadcrumbs.html" />
 <link rel="import" href="../bower_components/px-context-browser/px-context-browser.html" />
 <link rel="import" href="../bower_components/px-context-browser/px-context-browser-trigger.html" />
-<link rel="import" href="../bower_components/px-branding-bar/px-branding-bar.html" />
 <link rel="import" href="../bower_components/px-dropdown/px-dropdown.html" />
+<link rel="import" href="../bower_components/px-app-helpers/px-app-header/px-app-header.html" />
 
 <!-- Views used by the app -->
 <link rel="import" href="px-sample-layout.html" />
@@ -20,46 +20,47 @@
   <template>
     <style include="px-sample-app-styles"></style>
 
-    <!-- If you're using px-app-nav in its horizontal configuration, you could instead use px-app-header (in px-app-helpers repo)
-         which adds a scroll behavior so the branding bar minimizes as the user scrolls away from the top.
+    <!-- If you're using px-app-nav in its vertical configuration, you should use px-branding-bar instead of px-app-header -->
+    <px-app-header>
 
-         By default, the px-branding-bar uses the <title> attribute (in index.html wrapper in this case).
-         Use the application-title property to override. -->
+      <px-app-nav slot="app-nav" selected-route="{{selected}}"
+        items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Details","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'>
+      </px-app-nav>
+      <div>
 
-    <px-branding-bar></px-branding-bar>
-    <px-app-nav slot="app-nav" selected-route="{{selected}}"
-      items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Details","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'></px-app-nav>
+        <!-- The px-context-browser and px-breadcrumbs can be used in combination to provide both the traditional drilldown navigation
+            as well as an interactive breadcrumb for quick navigation throughout the hierarchy. Place them both in a flex--row so that
+            they appear next to each other in a container. -->
 
-      <!-- The px-context-browser and px-breadcrumbs can be used in combination to provide both the traditional drilldown navigation
-           as well as an interactive breadcrumb for quick navigation throughout the hierarchy. Place them both in a flex--row so that
-           they appear next to each other in a container. -->
+        <div class="context-browser shadow-navigation u-ph flex flex--row flex--middle">
+          <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
+          <px-context-browser open-trigger="[[openTrigger]]" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
+            selected-route='{{selectedRoute}}'></px-context-browser>
+          <px-breadcrumbs class="flex__item" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
+            selected-route='{{selectedRoute}}' click-only-mode></px-breadcrumbs>
+        </div>
 
-      <div class$="context-browser shadow-navigation u-ph flex flex--row {{getClass(vertical)}}">
-        <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
-        <px-context-browser open-trigger="[[openTrigger]]" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
-          selected-route='{{selectedRoute}}'></px-context-browser>
-        <px-breadcrumbs class="flex__item" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
-          selected-route='{{selectedRoute}}'></px-breadcrumbs>
+        <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
+            Alternatively, you could use px-app-route to instead bind px-app-nav to the browser's URL bar for more complex page routing. -->
+
+        <template is="dom-if" if="{{isEqual(selected,'tabs')}}">
+          <px-sample-layout></px-sample-layout>
+        </template>
+
+        <template is="dom-if" if="{{isEqual(selected,'dashboard')}}">
+          <px-sample-dashboard></px-sample-dashboard>
+        </template>
+
+        <template is="dom-if" if="{{isEqual(selected,'inbox')}}">
+          <px-sample-inbox></px-sample-inbox>
+        </template>
+
+        <div class="footer flex flex--left flex--middle u-p">
+          <a class="actionable" href="https://github.com/PredixDev/px-sample-app" target="_blank">Get the code for this sample application on GitHub</a>
+        </div>
+
       </div>
-
-    <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
-         Alternatively, you could use px-app-route to instead bind px-app-nav to the browser's URL bar for more complex page routing. -->
-
-    <template is="dom-if" if="{{isEqual(selected,'tabs')}}">
-      <px-sample-layout></px-sample-layout>
-    </template>
-
-    <template is="dom-if" if="{{isEqual(selected,'dashboard')}}">
-      <px-sample-dashboard></px-sample-dashboard>
-    </template>
-
-    <template is="dom-if" if="{{isEqual(selected,'inbox')}}">
-      <px-sample-inbox></px-sample-inbox>
-    </template>
-
-    <div class="footer flex flex--left flex--middle u-p">
-      <a class="actionable" href="https://github.com/PredixDev/px-sample-app" target="_blank">Get the code for this sample application on GitHub</a>
-    </div>
+    </px-app-header>
 
   </template>
 </dom-module>
