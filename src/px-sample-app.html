@@ -43,15 +43,15 @@
         <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
             Alternatively, you could use px-app-route to instead bind px-app-nav to the browser's URL bar for more complex page routing. -->
 
-        <template is="dom-if" if="{{isEqual(selected,'tabs')}}">
+        <template is="dom-if" if="{{isEqual(selected,'tabs')}}" restamp>
           <px-sample-layout></px-sample-layout>
         </template>
 
-        <template is="dom-if" if="{{isEqual(selected,'dashboard')}}">
+        <template is="dom-if" if="{{isEqual(selected,'dashboard')}}" restamp>
           <px-sample-dashboard></px-sample-dashboard>
         </template>
 
-        <template is="dom-if" if="{{isEqual(selected,'inbox')}}">
+        <template is="dom-if" if="{{isEqual(selected,'inbox')}}" restamp>
           <px-sample-inbox></px-sample-inbox>
         </template>
 
