@@ -1,3 +1,7 @@
+v1.0.10
+===================
+* add files for cloud deployment
+
 v1.0.9
 ===================
 * design feedback changes

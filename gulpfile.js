@@ -16,6 +16,8 @@ const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const cache = require('gulp-cached');
+const clean = require('gulp-clean');
+const exec = require('child_process').exec;
 
 const sassOptions = {
   importer: importOnce,
@@ -123,4 +125,36 @@ gulp.task('bump:major', function(){
 
 gulp.task('default', function(callback) {
   gulpSequence('clean', 'sass', 'transpile')(callback);
+});
+
+gulp.task('polymer:cli', function (cb) {
+  exec('node ./node_modules/polymer-cli/bin/polymer.js build', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
+gulp.task('clean', function(){
+	gulp.src('dist', {read: false})
+      .pipe(clean());
+})
+
+gulp.task('copy', function(){
+	var outputDir = './dist';
+	var index = gulp.src(['index.html']).pipe(gulp.dest(outputDir))
+	var src = gulp.src(['src/**/*']).pipe(gulp.dest(outputDir + '/src'))
+	var src = gulp.src(['css/**/*']).pipe(gulp.dest(outputDir + '/css'))
+	var bc = gulp.src(['bower_components/**/*.*']).pipe(gulp.dest(outputDir + '/bower_components'))
+	var server = gulp.src(['server/**/*.*']).pipe(gulp.dest(outputDir + '/server'))
+    var packageFile = gulp.src(['package.json']).pipe(gulp.dest(outputDir));
+});
+
+gulp.task('dist', function(cb) {
+	gulpSequence(
+		'clean', 
+		'transpile', 
+		'polymer:cli',
+		'copy'
+	)(cb);
 });
