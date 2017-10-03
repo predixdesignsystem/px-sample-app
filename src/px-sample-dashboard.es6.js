@@ -2,6 +2,10 @@
   Polymer({
     is: 'px-sample-dashboard',
     properties: {
+      title: {
+        type: String,
+        value: ""
+      },
       chartData: {
         type: Array,
         value: function () {
@@ -1334,6 +1338,22 @@
           }];
         }
       }
+    },
+    attached() {
+      this.listen(document.querySelector('#cb'), 'selected-changed', 'updateValues');
+    },
+    detached() {
+      this.unlisten(document.querySelector('#cb'), 'selected-changed');
+    },
+    updateValues() {
+      var gauges = document.querySelectorAll('px-gauge');
+      gauges.forEach(function(gauge) {
+        gauge.set('value', Math.floor(Math.random() * 100));
+      });
+      var keyvalues = document.querySelectorAll('px-key-value-pair');
+      keyvalues.forEach(function(keyvalue) {
+        keyvalue.set('value', Math.floor(Math.random() * 100));
+      });
     }
   });
 })();

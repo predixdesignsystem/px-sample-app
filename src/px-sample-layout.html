@@ -8,6 +8,7 @@
 <link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-dropdown/px-dropdown.html" />
 <link rel="import" href="../bower_components/px-toggle/px-toggle.html" />
+<link rel="import" href="../bower_components/px-datetime-picker/px-datetime-picker.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -16,8 +17,8 @@
   <template>
     <style include="px-sample-app-styles"></style>
 
-      <!-- Use Polymer (or whatever framework you want to use) to bind together the "selected" properties
-           of both px-tabs and iron-pages, so that a change of one will trigger a change of the other. -->
+      <!-- Disabled for the sake of simplicity, but you should use Polymer (or whatever framework you want to use)
+        to bind together the "selected" properties of both px-tabs and iron-pages, so that a change of one will trigger a change of the other. -->
 
       <px-tabs class="u-m+" selected="0">
         <px-tab id='tab1'>New Asset</px-tab>
@@ -30,49 +31,74 @@
         <!-- Container for the content of the 1st px-tab -->
         <div>
           <div class="u-mh+">
-            <span class="heading--page">Add New Asset</span>
+            <span class="heading--page">New Deployment</span>
+            <span class="heading--subsection u-mv++">Schedule</span>
             <div class="flex u-mv++">
-              <div class="u-mr++">
-                <label for="input1">Asset ID</label>
-                <input id="input1" value="LWK-EW-003" class="text-input input--small" type="text" />
+              <div class="u-mr++ u-1/4">
+                <label for="occurence">Occurence</label>
+                <input class="u-mh--" name="occurence" type="radio" checked />Recurrent
+                <input class="u-mh--" name="occurence" type="radio" />Run Once
+                <input class="u-mh--" name="occurence" type="radio" />Streaming
               </div>
-              <div>
-                <label for="input2">Serial Number</label>
-                <input id="input2" value="0216-285933-335" class="text-input input--small" type="text" />
-              </div>
-            </div>
-            <span class="heading--subsection u-mv++">Advanced options</span>
-            <div class="flex u-mv++">
-              <div class="u-mr++">
-                <label for="input1">Max output</label>
-                <input id="input1" value="100" class="text-input input--small" type="text" />
-              </div>
-              <div>
-                <label for="input2">Unit</label>
-                <px-dropdown items='["PSI","MW","F"]' selected="1"></px-dropdown>
+              <div class="u-1/4">
+                <label for="input1">Repeats Every</label>
+                <div class="flex">
+                  <input id="input1" value="30" class="text-input input--tiny u-mr--" type="text" />
+                  <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+                </div>
               </div>
             </div>
             <div class="flex u-mv++">
-              <div class="u-mr++">
-                <label for="input1">Asset Class</label>
-                <input id="input1" value="Turbine" class="text-input input--small" type="text" />
+              <div class="u-mr++ u-1/4">
+                <label for="datePicker1">Starting On</label>
+                <px-datetime-picker id="datePicker1" time-zone="UTC" show-time-zone="dropdown"></px-datetime-picker>
               </div>
-              <div>
-                <label for="input2">Security Level</label>
-                <px-dropdown items='["1","2","3","4"]' selected="1"></px-dropdown>
+              <div class="u-1/4">
+                <label for="dropdown1">Ending After</label>
+                <px-dropdown id="dropdown1" items='["One Week","One Month","One Year","Never"]' selected="1"></px-dropdown>
               </div>
             </div>
-            <span class="heading--subsection u-mv++">Other options</span>
-            <div class="u-mv">
-              <px-toggle class="u-mr--" size="small"></px-toggle>
-              <label class="label--inline">Show in search results</label>
+            <span class="heading--subsection u-mv++">Data Request</span>
+            <div class="flex u-mv++">
+              <div class="u-mr++ u-1/4">
+                <label for="input2">Batch Size</label>
+                <div class="flex">
+                  <input id="input2" value="30" class="text-input input--tiny u-mr--" type="text" />
+                  <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+                </div>
+              </div>
+              <div class="u-1/4">
+                <label for="input2">Offset Before Schedule</label>
+                <div class="flex">
+                  <input id="input2" value="30" class="text-input input--tiny u-mr--" type="text" />
+                  <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="2" button-style="bare"></px-dropdown>
+                </div>
+              </div>
             </div>
-            <div class="u-mv">
-              <px-toggle class="u-mr--" size="small"></px-toggle>
-              <label class="label--inline">For commissioning only</label>
+            <div class="flex u-mv++">
+              <div class="u-mr++ u-1/4">
+                <label for="sampleData">Sample Data</label>
+                <input class="u-mh--" name="sampleData" type="radio" checked />Raw
+                <input class="u-mh--" name="sampleData" type="radio" />Interpolated
+              </div>
             </div>
-            <button class="btn u-mv+">Cancel</button>
-            <button class="btn btn--call-to-action u-mv+">Submit</button>
+            <div class="flex u-mv++">
+              <div class="u-mr++ u-1/4">
+                <label for="input2">Sample Data Points</label>
+                <input id="input2" placeholder="Whole number between 1 and 10" class="text-input input--small" type="text" />
+              </div>
+              <div class="u-mr++ u-1/4">
+              <label for="input1">Sampling Interval</label>
+                <div class="flex">
+                  <input id="input1" value="30" class="text-input input--tiny u-mr--" type="text" />
+                  <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex--right">
+              <button class="btn u-mv+">Cancel</button>
+              <button class="btn btn--call-to-action u-mv+">Submit</button>
+            </div>
           </div>
 
           <px-card class="light-card" header-text="Fleet" icon="px-obj:steam-turbine">

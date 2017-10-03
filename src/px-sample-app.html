@@ -24,7 +24,7 @@
     <px-app-header>
 
       <px-app-nav slot="app-nav" selected-route="{{selected}}"
-        items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Details","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'>
+        items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Analytics","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'>
       </px-app-nav>
       <div>
 
@@ -34,10 +34,8 @@
 
         <div class="context-browser shadow-navigation u-ph flex flex--row flex--middle">
           <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
-          <px-context-browser open-trigger="[[openTrigger]]" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
-            selected-route='{{selectedRoute}}'></px-context-browser>
-          <px-breadcrumbs class="flex__item" items='[{"label":"Home","id":"home"},{"label":"Alerts","id":"alerts","info":"This is a list of alerts","children":[{"label":"Alert #1","id":"al1","info":"Oh no! Your turbine has stopped spinning"},{"label":"Alert #2","id":"al2","info":"Looks like something is not working"},{"label":"Alert #3","id":"al3","info":"I am a helpful alert message"},{"label":"Alert #4","id":"al4","info":"Danger: Something is not right."}]},{"label":"Assets","id":"assets","children":[{"label":"Asset #1","id":"a1","info":"Here is some information about this asset"},{"label":"Asset #2","id":"a2","info":"This is a different asset. Here is more information about this asset."}]}]'
-            selected-route='{{selectedRoute}}' click-only-mode></px-breadcrumbs>
+          <px-context-browser id="cb" open-trigger="[[openTrigger]]" items="{{items}}" selected-route='{{selectedRoute}}' loading-timeout="5"></px-context-browser>
+          <px-breadcrumbs class="flex__item" items="{{items}}" selected-route='{{selectedRoute}}'></px-breadcrumbs>
         </div>
 
         <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
@@ -48,7 +46,7 @@
         </template>
 
         <template is="dom-if" if="{{isEqual(selected,'dashboard')}}" restamp>
-          <px-sample-dashboard></px-sample-dashboard>
+          <px-sample-dashboard title="{{selectedAsset}}"></px-sample-dashboard>
         </template>
 
         <template is="dom-if" if="{{isEqual(selected,'inbox')}}" restamp>

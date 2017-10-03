@@ -1,3 +1,7 @@
+v1.0.11
+===================
+* updates per designer feedback
+
 v1.0.10
 ===================
 * add files for cloud deployment

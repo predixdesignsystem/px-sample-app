@@ -1,6 +1,6 @@
 {
   "name": "px-sample-app",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "index.html",
   "dependencies": {
     "polymer": "^1.9.0",
@@ -20,7 +20,8 @@
     "px-gauge": "^2.0.2",
     "px-vis-timeseries": "^3.1.2",
     "px-vis-radar": "^3.1.1",
-    "px-vis-polar": "^3.1.1"
+    "px-vis-polar": "^3.1.1",
+    "px-datetime-picker": "^1.0.4"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",

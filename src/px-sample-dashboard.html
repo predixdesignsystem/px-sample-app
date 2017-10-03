@@ -19,14 +19,14 @@
          we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
 
     <div class="spine u-pt">
-      <span class="heading--page u-p">West Coast Fleet</span>
+      <span class="heading--page u-p">{{title}}</span>
 
       <div class="flex flex--wrap flex--justify">
         <px-key-value-pair class="u-p" key="Total alerts" value="21" size="beta"></px-key-value-pair>
         <px-key-value-pair class="u-p" key="Connected devices" value="583" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Utilization" value="89%" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Utilization" value="89" uom="%" size="beta"></px-key-value-pair>
         <px-key-value-pair class="u-p" key="Faults" value="3" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="u-p" key="Output" value="53MW" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="u-p" key="Output" value="53" uom="MW" size="beta"></px-key-value-pair>
       </div>
     </div>
 
@@ -39,28 +39,28 @@
       <div class="flex flex--wrap flex--justify">
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="110MW" size="delta"></px-key-value-pair>
+            <px-key-value-pair key="Measured Output" value="110" uom="MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [112,57,53,122,128,120,56] ]' colors='["#8098FF"]'></px-simple-bar-chart>
           </div>
           <px-gauge class="gauge1" value="85" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="15MW" size="delta"></px-key-value-pair>
+            <px-key-value-pair key="Measured Output" value="15" uom="MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#7BA662"]'></px-simple-bar-chart>
           </div>
           <px-gauge class="gauge2" value="10" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="121MW" size="delta"></px-key-value-pair>
+            <px-key-value-pair key="Measured Output" value="121" uom="MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#E081C9"]'></px-simple-bar-chart>
           </div>
           <px-gauge class="gauge3" value="65" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
         </div>
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="98MW" size="delta"></px-key-value-pair>
+            <px-key-value-pair key="Measured Output" value="98" uom="MW" size="delta"></px-key-value-pair>
             <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#E9A24B"]'></px-simple-bar-chart>
           </div>
           <px-gauge class="gauge4" value="90" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
@@ -69,7 +69,7 @@
     </px-card>
 
     <!-- This last px-card includes a px-vis-timeseries chart. -->
-    <px-card class="light-card" header-text="Performance Over Time" icon="px-fea:orchestration">
+    <px-card class="light-card" header-text="Exhaust TC Differentials" icon="px-fea:orchestration">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
@@ -81,7 +81,7 @@
         chart-vertical-alignment="center"
         register-config='{"type":"horizontal"}'
         chart-data="[[chartData]]"
-        series-config='{"y0":{"name":"y0","x":"timeStamp","y":"y0","yAxisUnit":"F"},"y1":{"name":"y1","x":"timeStamp","y":"y1","yAxisUnit":"Hz"},"y2":{"name":"y2","x":"timeStamp","y":"y2","yAxisUnit":"C"},"y3":{"name":"y3","x":"timeStamp","y":"y3","yAxisUnit":"F"}}'
+        series-config='{"y0":{"name":"TC01-TTXM","x":"timeStamp","y":"y0","yAxisUnit":"C"},"y1":{"name":"TC02-TTXM","x":"timeStamp","y":"y1","yAxisUnit":"C"},"y2":{"name":"TC03-TTXM","x":"timeStamp","y":"y2","yAxisUnit":"C"},"y3":{"name":"TC04-TTXM","x":"timeStamp","y":"y3","yAxisUnit":"C"}}'
         chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}'
         x-axis-config='{"title":"Date"}'
         y-axis-config='{"title":"Temperature","titleTruncation":false,"unit":"C"}'>

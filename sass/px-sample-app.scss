@@ -22,6 +22,7 @@
 // Base
 @import "px-flexbox-design/_base.flexbox.scss";
 @import "px-headings-design/_base.headings.scss";
+$inuit-enable-input--tiny    : true;
 $inuit-enable-input--small    : true;
 @import "px-forms-design/_base.forms.scss";
 
