@@ -1,3 +1,7 @@
+v1.0.12
+===================
+* quick tweak for usability A/B testing
+
 v1.0.11
 ===================
 * updates per designer feedback

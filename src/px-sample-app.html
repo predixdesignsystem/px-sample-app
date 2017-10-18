@@ -35,7 +35,7 @@
         <div class="context-browser shadow-navigation u-ph flex flex--row flex--middle">
           <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
           <px-context-browser id="cb" open-trigger="[[openTrigger]]" items="{{items}}" selected-route='{{selectedRoute}}' loading-timeout="5"></px-context-browser>
-          <px-breadcrumbs class="flex__item" items="{{items}}" selected-route='{{selectedRoute}}'></px-breadcrumbs>
+          <px-breadcrumbs class="flex__item" items="{{items}}" selected-route='{{selectedRoute}}' click-only-mode></px-breadcrumbs>
         </div>
 
         <!-- These three dom-if blocks dictate which module (page/view) is rendered in the main content area, based on the px-app-nav selection.
