@@ -1,3 +1,7 @@
+v1.0.13
+===================
+* add isTerminal to CB assets
+
 v1.0.12
 ===================
 * quick tweak for usability A/B testing

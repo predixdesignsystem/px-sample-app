@@ -72,23 +72,28 @@
                           children: [
                             {
                               label: "XY12345",
-                              id: "XY12345"
+                              id: "XY12345",
+                              isTerminal: true
                             },
                             {
                               label: "XY12356",
-                              id: "XY12356"
+                              id: "XY12356",
+                              isTerminal: true
                             },
                             {
                               label: "XY12367",
-                              id: "XY12367"
+                              id: "XY12367",
+                              isTerminal: true
                             },
                             {
                               label: "XY12378",
-                              id: "XY12378"
+                              id: "XY12378",
+                              isTerminal: true
                             },
                             {
                               label: "XY12389",
-                              id: "XY12389"
+                              id: "XY12389",
+                              isTerminal: true
                             }
                           ]
                         },
@@ -140,23 +145,28 @@
                           children: [
                             {
                               label: "XY12345",
-                              id: "XY12345"
+                              id: "XY12345",
+                              isTerminal: true
                             },
                             {
                               label: "XY12356",
-                              id: "XY12356"
+                              id: "XY12356",
+                              isTerminal: true
                             },
                             {
                               label: "XY12367",
-                              id: "XY12367"
+                              id: "XY12367",
+                              isTerminal: true
                             },
                             {
                               label: "XY12378",
-                              id: "XY12378"
+                              id: "XY12378",
+                              isTerminal: true
                             },
                             {
                               label: "XY12389",
-                              id: "XY12389"
+                              id: "XY12389",
+                              isTerminal: true
                             }
                           ]
                         },
