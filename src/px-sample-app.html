@@ -34,7 +34,8 @@
 
         <div class="context-browser shadow-navigation u-ph flex flex--row flex--middle">
           <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
-          <px-context-browser id="cb" open-trigger="[[openTrigger]]" items="{{items}}" selected-route='{{selectedRoute}}' loading-timeout="5"></px-context-browser>
+          <px-context-browser-trigger trigger="{{favoritedTrigger}}" favorited></px-context-browser-trigger>
+          <px-context-browser id="cb" open-trigger="[[openTrigger]]" show-favorited favorited-trigger="[[favoritedTrigger]]" items="{{items}}" selected-route='{{selectedRoute}}' loading-timeout="5"></px-context-browser>
           <px-breadcrumbs class="flex__item" items="{{items}}" selected-route='{{selectedRoute}}' click-only-mode></px-breadcrumbs>
         </div>
 

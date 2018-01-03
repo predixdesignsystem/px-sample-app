@@ -33,9 +33,7 @@
     <!-- This first px-card contains 4 kpis with bar charts and 4 gauges -->
 
     <px-card header-text="Productivity Details" icon="px-fea:alerts">
-      <div class='actions'>
-        <px-icon icon='px-utl:app-settings'></px-icon>
-      </div>
+      <px-icon slot='actions' icon='px-utl:app-settings'></px-icon>
       <div class="flex flex--wrap flex--justify">
         <div class="gaugeContainer u-p u-mb flex flex--col">
           <div class="flex u-mb">
@@ -70,9 +68,7 @@
 
     <!-- This last px-card includes a px-vis-timeseries chart. -->
     <px-card class="light-card" header-text="Exhaust TC Differentials" icon="px-fea:orchestration">
-      <div class='actions'>
-        <px-icon icon='px-utl:app-settings'></px-icon>
-      </div>
+      <px-icon slot='actions' icon='px-utl:app-settings'></px-icon>
       <px-vis-timeseries
         debounce-resize-timing="250"
         width="700"
