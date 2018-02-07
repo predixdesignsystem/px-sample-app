@@ -3,16 +3,15 @@
   "version": "1.0.13",
   "main": "index.html",
   "dependencies": {
-    "polymer": "^1.9.0",
+    "polymer": "^2.0.0",
     "px-app-nav": "^2.0.6",
     "px-context-browser": "^2.0.4",
     "px-tabs": "^2.0.0",
     "px-key-value-pair": "^1.0.2",
-    "px-card": "^1.0.4",
+    "px-card": "^2.0.0",
     "px-breadcrumbs": "^1.0.4",
     "px-inbox": "^2.0.2",
     "px-toggle": "^2.0.1",
-    "px-data-table": "^4.0.4",
     "px-simple-bar-chart": "^2.0.2",
     "px-theme": "^3.0.0",
     "px-dark-theme": "^2.0.14",
@@ -21,12 +20,12 @@
     "px-vis-timeseries": "^3.1.2",
     "px-vis-radar": "^3.1.1",
     "px-vis-polar": "^3.1.1",
-    "px-datetime-picker": "^1.0.4"
+    "px-datetime-picker": "^2.0.0",
+    "px-data-grid": "https://github.com/vaadin/px-data-grid.git"
   },
   "devDependencies": {
-    "web-component-tester": "^5.0.0",
-    "webcomponentsjs": "^0.7.0",
-    "px-demo": "^2.0.0",
+    "webcomponentsjs": "^1.0.0",
+    "px-demo": "^3.0.0",
     "px-headings-design": "^1.0.3",
     "px-forms-design": "^2.0.6",
     "px-shadows-design": "^1.0.1",
@@ -38,8 +37,5 @@
     "px-helpers-design": "^1.0.3",
     "px-widths-responsive-design": "^1.0.2",
     "px-actionable-design": "^2.0.4"
-  },
-  "resolutions": {
-    "webcomponentsjs": "^0.7.0"
   }
 }
