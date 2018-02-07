@@ -1,3 +1,7 @@
+v2.0.0
+===================
+* migrate to Polymer 2
+
 v1.0.13
 ===================
 * add isTerminal to CB assets
