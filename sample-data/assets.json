@@ -1,0 +1,492 @@
+[
+  {
+    "id": "Europe",
+    "label": "Europe",
+    "data": {
+      "alerts": 43,
+      "connectedDevices": 778,
+      "utilization": 13,
+      "faults": 19,
+      "output": 2,
+      "measurements": [5, 75, 48, 91]
+    }
+  },
+  {
+    "id": "North_America",
+    "label": "North America",
+    "data": {
+      "alerts": 82,
+      "connectedDevices": 781,
+      "utilization": 5,
+      "faults": 16,
+      "output": 61,
+      "measurements": [6, 33, 12, 6]
+    },
+    "children": [
+      {
+        "id": "Canada",
+        "label": "Canada",
+        "data": {
+          "alerts": 66,
+          "connectedDevices": 524,
+          "utilization": 30,
+          "faults": 16,
+          "output": 20,
+          "measurements": [0, 73, 7, 29]
+        }
+      },
+      {
+        "id": "Mexico",
+        "label": "Mexico",
+        "data": {
+          "alerts": 12,
+          "connectedDevices": 578,
+          "utilization": 38,
+          "faults": 16,
+          "output": 45,
+          "measurements": [3, 99, 99, 20]
+        }
+      },
+      {
+        "id": "United_States",
+        "label": "United States",
+        "data": {
+          "alerts": 12,
+          "connectedDevices": 601,
+          "utilization": 78,
+          "faults": 6,
+          "output": 74,
+          "measurements": [4, 21, 10, 96]
+        },
+        "children": [
+          {
+            "id": "Arizona",
+            "label": "Arizona",
+            "data": {
+              "alerts": 66,
+              "connectedDevices": 738,
+              "utilization": 66,
+              "faults": 13,
+              "output": 33,
+              "measurements": [8, 24, 6, 21]
+            }
+          },
+          {
+            "id": "California",
+            "label": "California",
+            "data": {
+              "alerts": 8,
+              "connectedDevices": 724,
+              "utilization": 71,
+              "faults": 6,
+              "output": 31,
+              "measurements": [1, 49, 29, 82]
+            }
+          },
+          {
+            "id": "Colorado",
+            "label": "Colorado",
+            "data": {
+              "alerts": 88,
+              "connectedDevices": 791,
+              "utilization": 44,
+              "faults": 17,
+              "output": 41,
+              "measurements": [5, 45, 69, 11]
+            }
+          },
+          {
+            "id": "Idaho",
+            "label": "Idaho",
+            "data": {
+              "alerts": 8,
+              "connectedDevices": 658,
+              "utilization": 45,
+              "faults": 12,
+              "output": 17,
+              "measurements": [4, 18, 33, 50]
+            }
+          },
+          {
+            "id": "Montana",
+            "label": "Montana",
+            "data": {
+              "alerts": 65,
+              "connectedDevices": 690,
+              "utilization": 4,
+              "faults": 6,
+              "output": 44,
+              "measurements": [2, 41, 70, 28]
+            }
+          },
+          {
+            "id": "Nevada",
+            "label": "Nevada",
+            "data": {
+              "alerts": 46,
+              "connectedDevices": 592,
+              "utilization": 15,
+              "faults": 19,
+              "output": 3,
+              "measurements": [4, 32, 88, 77]
+            },
+            "children": [
+              {
+                "id": "Reno_Plant_1",
+                "label": "Reno Plant 1",
+                "data": {
+                  "alerts": 47,
+                  "connectedDevices": 796,
+                  "utilization": 93,
+                  "faults": 5,
+                  "output": 44,
+                  "measurements": [9, 21, 77, 51]
+                }
+              },
+              {
+                "id": "Reno_Plant_2",
+                "label": "Reno Plant 2",
+                "data": {
+                  "alerts": 55,
+                  "connectedDevices": 689,
+                  "utilization": 71,
+                  "faults": 15,
+                  "output": 32,
+                  "measurements": [6, 43, 71, 53]
+                },
+                "children": [
+                  {
+                    "isTerminal": true,
+                    "id": "XY12345",
+                    "label": "XY12345",
+                    "data": {
+                      "alerts": 11,
+                      "connectedDevices": 732,
+                      "utilization": 48,
+                      "faults": 16,
+                      "output": 32,
+                      "measurements": [3, 59, 98, 59]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12356",
+                    "label": "XY12356",
+                    "data": {
+                      "alerts": 20,
+                      "connectedDevices": 612,
+                      "utilization": 29,
+                      "faults": 5,
+                      "output": 20,
+                      "measurements": [1, 34, 56, 16]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12367",
+                    "label": "XY12367",
+                    "data": {
+                      "alerts": 31,
+                      "connectedDevices": 716,
+                      "utilization": 3,
+                      "faults": 7,
+                      "output": 35,
+                      "measurements": [2, 80, 92, 44]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12378",
+                    "label": "XY12378",
+                    "data": {
+                      "alerts": 26,
+                      "connectedDevices": 517,
+                      "utilization": 99,
+                      "faults": 12,
+                      "output": 20,
+                      "measurements": [2, 2, 59, 65]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12389",
+                    "label": "XY12389",
+                    "data": {
+                      "alerts": 84,
+                      "connectedDevices": 795,
+                      "utilization": 20,
+                      "faults": 8,
+                      "output": 10,
+                      "measurements": [5, 61, 94, 43]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "Reno_Plant_3",
+                "label": "Reno Plant 3",
+                "data": {
+                  "alerts": 86,
+                  "connectedDevices": 578,
+                  "utilization": 68,
+                  "faults": 18,
+                  "output": 54,
+                  "measurements": [3, 32, 99, 65]
+                }
+              },
+              {
+                "id": "Reno_Plant_4",
+                "label": "Reno Plant 4",
+                "data": {
+                  "alerts": 29,
+                  "connectedDevices": 603,
+                  "utilization": 93,
+                  "faults": 19,
+                  "output": 70,
+                  "measurements": [0, 37, 34, 47]
+                }
+              },
+              {
+                "id": "Vegas_Plant_1",
+                "label": "Vegas Plant 1",
+                "data": {
+                  "alerts": 3,
+                  "connectedDevices": 695,
+                  "utilization": 26,
+                  "faults": 15,
+                  "output": 80,
+                  "measurements": [8, 28, 71, 2]
+                }
+              },
+              {
+                "id": "Vegas_Plant_2",
+                "label": "Vegas Plant 2",
+                "data": {
+                  "alerts": 46,
+                  "connectedDevices": 711,
+                  "utilization": 2,
+                  "faults": 5,
+                  "output": 37,
+                  "measurements": [1, 70, 66, 54]
+                }
+              }
+            ]
+          },
+          {
+            "id": "New_Mexico",
+            "label": "New Mexico",
+            "data": {
+              "alerts": 90,
+              "connectedDevices": 591,
+              "utilization": 55,
+              "faults": 10,
+              "output": 4,
+              "measurements": [1, 3, 58, 35]
+            }
+          },
+          {
+            "id": "Oregon",
+            "label": "Oregon",
+            "data": {
+              "alerts": 67,
+              "connectedDevices": 616,
+              "utilization": 91,
+              "faults": 18,
+              "output": 52,
+              "measurements": [2, 71, 65, 77]
+            }
+          },
+          {
+            "id": "Texas",
+            "label": "Texas",
+            "data": {
+              "alerts": 66,
+              "connectedDevices": 694,
+              "utilization": 62,
+              "faults": 19,
+              "output": 17,
+              "measurements": [9, 58, 39, 85]
+            }
+          },
+          {
+            "id": "Utah",
+            "label": "Utah",
+            "data": {
+              "alerts": 91,
+              "connectedDevices": 749,
+              "utilization": 8,
+              "faults": 10,
+              "output": 94,
+              "measurements": [9, 3, 92, 3]
+            }
+          },
+          {
+            "id": "Washington",
+            "label": "Washington",
+            "data": {
+              "alerts": 12,
+              "connectedDevices": 615,
+              "utilization": 1,
+              "faults": 17,
+              "output": 80,
+              "measurements": [6, 54, 90, 46]
+            }
+          },
+          {
+            "id": "Wyoming",
+            "label": "Wyoming",
+            "data": {
+              "alerts": 6,
+              "connectedDevices": 587,
+              "utilization": 47,
+              "faults": 7,
+              "output": 5,
+              "measurements": [3, 28, 56, 30]
+            },
+            "children": [
+              {
+                "id": "Cheyenne_Plant_1",
+                "label": "Cheyenne Plant 1",
+                "data": {
+                  "alerts": 25,
+                  "connectedDevices": 627,
+                  "utilization": 87,
+                  "faults": 19,
+                  "output": 41,
+                  "measurements": [1, 5, 57, 64]
+                },
+                "children": [
+                  {
+                    "isTerminal": true,
+                    "id": "XY12345",
+                    "label": "XY12345",
+                    "data": {
+                      "alerts": 42,
+                      "connectedDevices": 624,
+                      "utilization": 35,
+                      "faults": 15,
+                      "output": 28,
+                      "measurements": [2, 75, 33, 89]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12356",
+                    "label": "XY12356",
+                    "data": {
+                      "alerts": 50,
+                      "connectedDevices": 667,
+                      "utilization": 4,
+                      "faults": 10,
+                      "output": 95,
+                      "measurements": [1, 84, 44, 54]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12367",
+                    "label": "XY12367",
+                    "data": {
+                      "alerts": 60,
+                      "connectedDevices": 718,
+                      "utilization": 12,
+                      "faults": 13,
+                      "output": 48,
+                      "measurements": [4, 34, 0, 75]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12378",
+                    "label": "XY12378",
+                    "data": {
+                      "alerts": 97,
+                      "connectedDevices": 659,
+                      "utilization": 23,
+                      "faults": 7,
+                      "output": 27,
+                      "measurements": [4, 31, 57, 63]
+                    }
+                  },
+                  {
+                    "isTerminal": true,
+                    "id": "XY12389",
+                    "label": "XY12389",
+                    "data": {
+                      "alerts": 64,
+                      "connectedDevices": 705,
+                      "utilization": 68,
+                      "faults": 10,
+                      "output": 61,
+                      "measurements": [8, 12, 74, 13]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "Cheyenne_Plant_2",
+                "label": "Cheyenne Plant 2",
+                "data": {
+                  "alerts": 81,
+                  "connectedDevices": 570,
+                  "utilization": 94,
+                  "faults": 6,
+                  "output": 61,
+                  "measurements": [7, 89, 2, 10]
+                }
+              },
+              {
+                "id": "Cheyenne_Plant_3",
+                "label": "Cheyenne Plant 3",
+                "data": {
+                  "alerts": 8,
+                  "connectedDevices": 552,
+                  "utilization": 31,
+                  "faults": 19,
+                  "output": 20,
+                  "measurements": [7, 69, 87, 73]
+                }
+              },
+              {
+                "id": "Rock_Springs_Plant_1",
+                "label": "Rock Springs Plant 1",
+                "data": {
+                  "alerts": 58,
+                  "connectedDevices": 544,
+                  "utilization": 93,
+                  "faults": 17,
+                  "output": 70,
+                  "measurements": [9, 45, 4, 97]
+                }
+              },
+              {
+                "id": "Rock_Springs_Plant_2",
+                "label": "Rock Springs Plant 2",
+                "data": {
+                  "alerts": 79,
+                  "connectedDevices": 779,
+                  "utilization": 27,
+                  "faults": 5,
+                  "output": 19,
+                  "measurements": [0, 14, 65, 52]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "South_America",
+    "label": "South America",
+    "data": {
+      "alerts": 35,
+      "connectedDevices": 571,
+      "utilization": 93,
+      "faults": 6,
+      "output": 23,
+      "measurements": [8, 93, 58, 46]
+    }
+  }
+]

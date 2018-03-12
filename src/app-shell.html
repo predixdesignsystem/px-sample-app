@@ -1,0 +1,148 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link rel="import" href="../bower_components/app-route/app-location.html"/>
+<link rel="import" href="../bower_components/px-app-helpers/px-app-route/px-app-route.html"/>
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html"/>
+<link defer rel="import" href="../bower_components/px-app-helpers/px-app-header/px-app-header.html"/>
+<link defer rel="import" href="../bower_components/px-branding-bar/px-branding-bar.html"/>
+<link defer rel="import" href="../bower_components/px-app-nav/px-app-nav.html"/>
+
+<!-- Views -->
+<link rel="lazy-import" href="screens/dashboard/dashboard-view.html"/>
+<link rel="lazy-import" href="screens/analytics/analytics-view.html"/>
+<link rel="lazy-import" href="screens/alerts/alerts-view.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../css/app-shared-styles.html"/>
+<link rel="import" href="../css/app-shell-styles.html"/>
+
+<dom-module id="app-shell">
+  <template>
+    <style include="app-shared-styles"></style>
+    <style include="app-shell-styles"></style>
+
+    <!--
+      Updates the URL when the user selects a new px-app-nav item, and updates
+      the px-app-nav selected property/visual style when the URL changes
+    -->
+    <app-location
+        route="{{route}}"
+        use-hash-as-path>
+    </app-location>
+    <px-app-route
+        route="{{route}}"
+        use-hash-as-path
+        update-nav-route
+        nav-route="{{selectedNavRoute}}">
+    </px-app-route>
+
+    <!--
+      If you're using px-app-nav in its vertical configuration, you should
+      remove px-app-header and create your own layout with CSS
+    -->
+    <px-app-header>
+      <px-branding-bar
+          slot="branding-bar"
+          application-title="Predix Sample Application">
+      </px-branding-bar>
+      <px-app-nav
+          slot="app-nav"
+          items="{{navItems}}"
+          selected="{{selectedNavItem}}"
+          selected-route="{{selectedNavRoute}}">
+      </px-app-nav>
+
+      <div style="height: 100%">
+        <!--
+          iron-pages shows and hides each view when the URL changes or the user
+          selects a new navigation item in the px-app-nav component. View loading
+          is deferred until the view is needed (see the JS below).
+        -->
+        <iron-pages
+            style="height: 100%"
+            selected="[[selectedNavItem.id]]"
+            attr-for-selected="name"
+            role="main">
+          <dashboard-view name="dashboard"></dashboard-view>
+          <analytics-view name="analytics"></analytics-view>
+          <alerts-view name="alerts"></alerts-view>
+        </iron-pages>
+      </div>
+    </px-app-header>
+  </template>
+
+  <script>
+    {
+      class AppShell extends Polymer.Element {
+        static get is() { return 'app-shell'; }
+
+        static get properties() {
+          return {
+            navItems: Array,
+            route: Object,
+            selectedNavRoute: Array,
+            selectedNavItem: Object,
+            // This shouldn't be neccessary, but the Analyzer isn't picking up
+            // Polymer.Element#rootPath
+            rootPath: String,
+          };
+        }
+
+        static get observers() {
+          return [
+            '_loadView(selectedNavItem.id)',
+          ];
+        }
+
+        constructor() {
+          super();
+
+          // Items to show in the px-app-nav component. Define them statically
+          // in this file like below, or load them on demand from a .json file
+          // or from an API server.
+          this.navItems = [
+            {
+              label: 'Dashboard',
+              id: 'dashboard',
+              icon: 'px-fea:dashboard'
+            },
+            {
+              label: 'Analytics',
+              id: 'analytics',
+              icon: 'px-fea:analysis'
+            },
+            {
+              label: 'Alerts',
+              id: 'alerts',
+              icon: 'px-fea:alerts'
+            }
+          ];
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+          if (!window.location.hash) {
+            // No page in the URL, load the dashboard page by default
+            window.history.pushState({}, null, '/#/dashboard');
+            window.dispatchEvent(new CustomEvent('location-changed'));
+          }
+        }
+
+        _loadView(page) {
+          this._loadedPages = this._loadedPages || {};
+          const paths = {
+            dashboard: 'screens/dashboard/dashboard-view.html',
+            analytics: 'screens/analytics/analytics-view.html',
+            alerts: 'screens/alerts/alerts-view.html'
+          };
+          if (page && paths[page] && !this._loadedPages[page]) {
+            const url = this.resolveUrl(paths[page]);
+            Polymer.importHref(url, null, null, true);
+          }
+        }
+      }
+      window.customElements.define(AppShell.is, AppShell);
+    }
+  </script>
+</dom-module>

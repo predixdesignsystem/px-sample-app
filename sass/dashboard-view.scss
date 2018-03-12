@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2014 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+
+// Settings
+@import "px-colors-design/_settings.colors.scss";
+@import "px-defaults-design/_settings.defaults.scss";
+
+// Component
+.context-browser-container {
+  position: relative;
+  z-index: 1;
+  height: 2.4rem;
+  background-color: var(--px-card-background-color);
+}
+
+.gauge-container {
+  width: 20%;
+  min-width: 16rem;
+}
+.gauge1 {
+  flex: 0 1 12rem;
+  --px-gauge-fill-normal-color: $blue5;
+}
+.gauge2 {
+  flex: 0 1 12rem;
+  --px-gauge-fill-normal-color: $green5;
+}
+.gauge3 {
+  flex: 0 1 12rem;
+  --px-gauge-fill-normal-color: $purple5;
+}
+.gauge4 {
+  flex: 0 1 12rem;
+  --px-gauge-fill-normal-color: $orange5;
+}
+
+.chart-container {
+  height: 500px;
+}
+
+px-vis-timeseries {
+  --px-vis-series-color-0: $blue5;
+  --px-vis-series-color-1: $green5;
+  --px-vis-series-color-2: $purple5;
+  --px-vis-series-color-3: $orange5;
+}
