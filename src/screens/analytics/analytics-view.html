@@ -1,0 +1,221 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html"/>
+<link defer rel="import" href="../../../bower_components/iron-pages/iron-pages.html"/>
+<link defer rel="import" href="../../../bower_components/px-tabs/px-tabs.html"/>
+<link defer rel="import" href="../../../bower_components/px-card/px-card.html"/>
+<link defer rel="import" href="../../../bower_components/px-dropdown/px-dropdown.html"/>
+<link defer rel="import" href="../../../bower_components/px-datetime-picker/px-datetime-picker.html"/>
+<link defer rel="import" href="../../../bower_components/px-data-grid/px-data-grid.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../../../css/app-shared-styles.html"/>
+
+<dom-module id="analytics-view">
+  <template>
+    <style include="app-shared-styles"></style>
+
+    <!--
+      Loads the fleet data from a fake "server", which is just a .json file on
+      disk. Swap this URL for your the API service that returns your fleet data.
+    -->
+    <iron-ajax
+        id="ajax"
+        url="../../../sample-data/fleet.json"
+        handle-as="json"
+        last-response="{{_fleetData}}">
+    </iron-ajax>
+
+    <!--
+        Disabled for the sake of simplicity, but you should use Polymer (or
+        whatever framework you want to use) to bind together the "selected"
+        properties of both px-tabs and iron-pages, so that a change of one will
+        trigger a change of the other.
+    -->
+    <div class="spine">
+      <px-tabs class="u-m+" selected="0">
+        <px-tab id="tab1">New Asset</px-tab>
+        <px-tab id="tab2">Configure Fleet</px-tab>
+        <px-tab id="tab3">Asset Detail</px-tab>
+        <px-tab id="tab3">Expert Search</px-tab>
+      </px-tabs>
+    </div>
+
+    <iron-pages selected="0">
+
+      <!-- Container for the content of the 1st px-tab -->
+      <section>
+        <!-- Form -->
+        <div class="spine u-ph+">
+          <span class="heading--page">New Deployment</span>
+
+          <!-- Form section: "Schedule" -->
+          <span class="heading--subsection u-mv++">Schedule</span>
+          <div class="flex u-mv++">
+            <div class="u-mr++ u-1/4">
+              <label for="occurence">Occurence</label>
+              <input class="u-mh--" name="occurence" type="radio" checked />Recurrent
+              <input class="u-mh--" name="occurence" type="radio" />Run Once
+              <input class="u-mh--" name="occurence" type="radio" />Streaming
+            </div>
+            <div class="u-1/4">
+              <label for="input1">Repeats Every</label>
+              <div class="flex flex--middle">
+                <input id="input1" value="30" class="text-input input--tiny u-mr--" type="text" />
+                <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="flex u-mv++">
+            <div class="u-mr++ u-1/4">
+              <label for="datePicker1">Starting On</label>
+              <px-datetime-picker id="datePicker1" time-zone="UTC" show-time-zone="dropdown"></px-datetime-picker>
+            </div>
+            <div class="u-1/4">
+              <label for="dropdown1">Ending After</label>
+              <px-dropdown id="dropdown1" items='["One Week","One Month","One Year","Never"]' selected="1"></px-dropdown>
+            </div>
+          </div>
+
+          <!-- Form section: "Data Request" -->
+          <span class="heading--subsection u-mv++">Data Request</span>
+          <div class="flex u-mv++">
+            <div class="u-mr++ u-1/4">
+              <label for="input2">Batch Size</label>
+              <div class="flex flex--middle">
+                <input id="input2" value="30" class="text-input input--tiny u-mr--" type="text" />
+                <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+              </div>
+            </div>
+            <div class="u-1/4">
+              <label for="input2">Offset Before Schedule</label>
+              <div class="flex flex--middle">
+                <input id="input2" value="30" class="text-input input--tiny u-mr--" type="text" />
+                <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="2" button-style="bare"></px-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="flex u-mv++">
+            <div class="u-mr++ u-1/4">
+              <label for="sampleData">Sample Data</label>
+              <input class="u-mh--" name="sampleData" type="radio" checked />Raw
+              <input class="u-mh--" name="sampleData" type="radio" />Interpolated
+            </div>
+          </div>
+          <div class="flex u-mv++">
+            <div class="u-mr++ u-1/4">
+              <label for="input2">Sample Data Points</label>
+              <input id="input2" placeholder="Whole number between 1 and 10" class="text-input input--small" type="text" />
+            </div>
+            <div class="u-mr++ u-1/4">
+            <label for="input1">Sampling Interval</label>
+              <div class="flex flex--middle">
+                <input id="input1" value="30" class="text-input input--tiny u-mr--" type="text" />
+                <px-dropdown items='["Minutes","Hours","Days","Months"]' selected="0" button-style="bare"></px-dropdown>
+              </div>
+            </div>
+          </div>
+
+          <!-- From section: "Cancel/Submit" -->
+          <div class="flex flex--right">
+            <button class="btn u-mv+">Cancel</button>
+            <button class="btn btn--call-to-action u-mv+">Submit</button>
+          </div>
+        </div>
+
+        <!-- Fleet data grid -->
+        <px-card class="light-card" header-text="Fleet" icon="px-obj:steam-turbine">
+          <div slot="actions">
+            <px-icon icon="px-utl:app-settings"></px-icon>
+          </div>
+          <px-data-grid table-data="[[_fleetData]]" columns="[[_fleetColumns]]" hide-action-menu>
+          </px-data-grid>
+        </px-card>
+      </section>
+
+      <!-- Container for the content of the 2nd px-tab -->
+      <div>
+        <span class="heading--page">Configure Fleet</span>
+      </div>
+      <!-- Container for the content of the 3rd px-tab -->
+      <div>
+        <span class="heading--page">Asset Detail</span>
+      </div>
+      <!-- Container for the content of the 4th px-tab -->
+      <div>
+        <span class="heading--page">Expert Search</span>
+      </div>
+    </iron-pages>
+  </template>
+  <script>
+    {
+      class AnalyticsView extends Polymer.Element {
+        static get is() { return 'analytics-view'; }
+
+        static get properties() {
+          return {
+            _fleetData: Array,
+            /** Configures columns for the fleet data grid */
+            _fleetColumns: Array
+          };
+        }
+
+        constructor() {
+          super();
+          this._fleetColumns = [
+            {
+              name: 'Last Occurance',
+              path: 'occurance',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Asset Path',
+              path: 'id',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Point',
+              path: 'point',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Meter',
+              path: 'meter',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Units',
+              path: 'units',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Current Reading',
+              path: 'reading',
+              type: 'number',
+              renderer: 'px-data-grid-number-renderer'
+            }
+          ];
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            // Wait until next render to load fleet data so we don't block
+            // render with the network request.
+            if (!this.alertItems) {
+              this.$.ajax.generateRequest();
+            }
+          });
+        }
+      }
+      window.customElements.define(AnalyticsView.is, AnalyticsView);
+    }
+  </script>
+</dom-module>
