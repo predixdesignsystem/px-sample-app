@@ -33,8 +33,20 @@ $inuit-enable-input--small    : true;
 // Objects
 @import "px-shadows-design/_objects.shadows.scss";
 $inuit-enable-btn--call-to-action : true;
+$inuit-enable-btn--primary : true;
 @import 'px-buttons-design/_objects.buttons.scss';
 @import 'px-actionable-design/_objects.actionable.scss';
+$inuit-enable-layout--center : true;
+$inuit-enable-layout--huge   : true;
+@import 'px-layout-design/_objects.layout.scss';
+
+.layout__item {
+  margin-bottom: 1rem;
+  min-width: 10rem;
+}
+.layout--center .layout__item {
+  max-width: 25rem;
+}
 
 // Component - Styles shared between all views
 
@@ -50,13 +62,16 @@ $inuit-enable-btn--call-to-action : true;
 }
 
 // Trumps
-$inuit-enable-margins         : true;
-$inuit-enable-margins--tiny   : true;
-$inuit-enable-margins--small  : true;
-$inuit-enable-margins--large  : true;
-$inuit-enable-margins--huge   : true;
-$inuit-enable-paddings        : true;
-$inuit-enable-paddings--large : true;
-$inuit-enable-paddings--huge  : true;
+$inuit-enable-margins                  : true;
+$inuit-enable-margins--tiny            : true;
+$inuit-enable-margins--small           : true;
+$inuit-enable-margins--large           : true;
+$inuit-enable-margins--huge            : true;
+$inuit-enable-margins--negative-small  : true;
+$inuit-enable-paddings                 : true;
+$inuit-enable-paddings--tiny           : true;
+$inuit-enable-paddings--small          : true;
+$inuit-enable-paddings--large          : true;
+$inuit-enable-paddings--huge           : true;
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";

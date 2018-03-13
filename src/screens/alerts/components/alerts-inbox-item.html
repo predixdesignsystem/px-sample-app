@@ -24,35 +24,17 @@
     <div class="heading--page u-p">[[alert.title]]</div>
 
     <!-- Overview -->
-    <div class="flex flex--wrap flex--justify u-p">
-      <span class="u-1/3-desk-and-up u-pr++ u-mb-">Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</span>
-      <div class="u-1/3-desk-and-up u-pr++ u-mb-">
-        <px-key-value-pair
-            class="u-mv"
-            key="Alert ID"
-            value="[[alert.alertId]]"
-            size="delta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-mv"
-            key="Alert Source"
-            value="[[alert.alertSource]]"
-            size="delta">
-        </px-key-value-pair>
+    <div class="layout layout--huge u-p">
+      <div class="layout__item">
+        <px-key-value-pair label="Description" value="Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam."></px-key-value-pair>
       </div>
-      <div class="u-1/3-desk-and-up u-pr++ u-mb-">
-        <px-key-value-pair
-            class="u-mv"
-            key="Received Date/Time"
-            value="[[alert.receivedDateTime]]"
-            size="delta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-mv"
-            key="Case Number"
-            value="[[alert.caseNumber]]"
-            size="delta">
-        </px-key-value-pair>
+      <div class="layout__item layout">
+        <px-key-value-pair class="layout__item" label="Alert ID" value="[[alert.alertId]]" size="epsilon"></px-key-value-pair>
+        <px-key-value-pair class="layout__item" label="Alert Source" value="[[alert.alertSource]]" size="epsilon"></px-key-value-pair>
+      </div>
+      <div class="layout__item layout">
+        <px-key-value-pair class="layout__item" label="Received Date/Time" value="[[alert.receivedDateTime]]" size="epsilon"></px-key-value-pair>
+        <px-key-value-pair class="layout__item" label="Case Number" value="[[alert.caseNumber]]" size="epsilon"></px-key-value-pair>
       </div>
     </div>
 
@@ -60,26 +42,10 @@
     <div class="u-p">
       <span class="heading--subsection">Customer Information</span>
       <div class="flex flex--row flex--wrap flex--justify">
-        <px-key-value-pair
-            class="u-mv"
-            key="Customer"
-            value="[[alert.customer]]">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-mv"
-            key="Contract Type"
-            value="[[alert.serialNumber]]">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-mv"
-            key="DLN Type"
-            value="[[alert.dlnType]]">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-mv"
-            key="Security"
-            value="[[alert.model]]">
-        </px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="Customer" value="[[alert.customer]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="Contract Type" value="[[alert.serialNumber]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="DLN Type" value="[[alert.dlnType]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="Security" value="[[alert.model]]"></px-key-value-pair>
       </div>
     </div>
 

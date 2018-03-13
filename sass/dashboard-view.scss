@@ -20,34 +20,16 @@
   background-color: var(--px-card-background-color);
 }
 
-.gauge-container {
-  width: 20%;
-  min-width: 16rem;
+// Provide some color variation for vis components
+.vis1 {
+  --px-percent-circle-fill-color: $blue5;
 }
-.gauge1 {
-  flex: 0 1 12rem;
-  --px-gauge-fill-normal-color: $blue5;
+.vis2 {
+  --px-percent-circle-fill-color: $green5;
 }
-.gauge2 {
-  flex: 0 1 12rem;
-  --px-gauge-fill-normal-color: $green5;
+.vis3 {
+  --px-percent-circle-fill-color: $purple5;
 }
-.gauge3 {
-  flex: 0 1 12rem;
-  --px-gauge-fill-normal-color: $purple5;
-}
-.gauge4 {
-  flex: 0 1 12rem;
-  --px-gauge-fill-normal-color: $orange5;
-}
-
-.chart-container {
-  height: 500px;
-}
-
-px-vis-timeseries {
-  --px-vis-series-color-0: $blue5;
-  --px-vis-series-color-1: $green5;
-  --px-vis-series-color-2: $purple5;
-  --px-vis-series-color-3: $orange5;
+.vis4 {
+  --px-percent-circle-fill-color: $orange5;
 }

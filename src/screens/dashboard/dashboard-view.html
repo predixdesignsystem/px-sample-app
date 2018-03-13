@@ -2,12 +2,8 @@
 
 <!-- Components -->
 <link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html"/>
-<link rel="import" href="../../../bower_components/px-card/px-card.html"/>
-<link rel="import" href="../../../bower_components/px-simple-bar-chart/px-simple-bar-chart.html"/>
-<link rel="import" href="../../../bower_components/px-key-value-pair/px-key-value-pair.html"/>
-<link rel="import" href="../../../bower_components/px-gauge/px-gauge.html"/>
-<link rel="import" href="../../../bower_components/px-card/px-card.html"/>
-<link rel="import" href="../../../bower_components/px-vis-timeseries/px-vis-timeseries.html"/>
+<link rel="import" href="../../../bower_components/px-percent-circle/px-percent-circle.html" />
+<link rel="import" href="../../../bower_components/px-data-grid/px-data-grid-paginated.html" />
 <link rel="import" href="../../../bower_components/px-context-browser/px-context-browser.html"/>
 <link rel="import" href="../../../bower_components/px-context-browser/px-context-browser-trigger.html"/>
 <link rel="import" href="../../../bower_components/px-breadcrumbs/px-breadcrumbs.html"/>
@@ -55,106 +51,41 @@
       </px-breadcrumbs>
     </div>
 
-    <!--
-      The dashboard title and several key-value pairs form a "spine", a design
-      system pattern for high-level information shown about an asset at the
-      top of a dashboard.
-    -->
-    <div class="spine u-pt">
-      <span class="heading--page u-p">[[_selectedAsset.label]]</span>
-      <div class="flex flex--wrap flex--justify">
-        <px-key-value-pair
-            class="u-p"
-            key="Total alerts"
-            value="[[_selectedAsset.data.alerts]]"
-            size="beta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-p"
-            key="Connected devices"
-            value="[[_selectedAsset.data.connectedDevices]]"
-            size="beta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-p"
-            key="Utilization"
-            value="[[_selectedAsset.data.utilization]]"
-            uom="%"
-            size="beta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-p"
-            key="Faults"
-            value="[[_selectedAsset.data.faults]]"
-            size="beta">
-        </px-key-value-pair>
-        <px-key-value-pair
-            class="u-p"
-            key="Output"
-            value="[[_selectedAsset.data.output]]"
-            uom="MW"
-            size="beta">
-        </px-key-value-pair>
-      </div>
+    <div>
+      <section class="u-mt u-mb++">
+        <span class="delta u-p">Production</span>
+        <div class="layout layout--huge layout--center u-mv++">
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis1" val="32" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Solar</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis2" val="24" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Wind</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis3" val="11" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Biogas</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis4" val="67" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Total</span>
+          </div>
+        </div>
+      </section>
+      <section class="u-p">
+        <div class="flex flex--justify">
+          <span class="delta">Table Title</span>
+          <div>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:filter"></px-icon>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:edit"></px-icon>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:help"></px-icon>
+          </div>
+        </div>
+        <px-data-grid-paginated table-data='[[_tableData]]' hide-action-menu></px-data-grid-paginated>
+      </section>
     </div>
 
-
-    <!-- This first px-card contains 4 kpis with bar charts and 4 gauges -->
-    <px-card header-text="Productivity Details" icon="px-fea:alerts">
-      <div slot="actions">
-        <px-icon icon="px-utl:app-settings"></px-icon>
-      </div>
-      <div class="flex flex--wrap flex--justify">
-        <div class="gauge-container u-p u-mb flex flex--col">
-          <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="110" uom="MW" size="delta"></px-key-value-pair>
-            <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [112,57,53,122,128,120,56] ]' colors='["#8098FF"]'></px-simple-bar-chart>
-          </div>
-          <px-gauge class="gauge1" value="[[_selectedAsset.data.measurements.0]]" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
-        </div>
-        <div class="gauge-container u-p u-mb flex flex--col">
-          <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="15" uom="MW" size="delta"></px-key-value-pair>
-            <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#7BA662"]'></px-simple-bar-chart>
-          </div>
-          <px-gauge class="gauge2" value="[[_selectedAsset.data.measurements.1]]" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
-        </div>
-        <div class="gauge-container u-p u-mb flex flex--col">
-          <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="121" uom="MW" size="delta"></px-key-value-pair>
-            <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#E081C9"]'></px-simple-bar-chart>
-          </div>
-          <px-gauge class="gauge3" value="[[_selectedAsset.data.measurements.2]]" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
-        </div>
-        <div class="gauge-container u-p u-mb flex flex--col">
-          <div class="flex u-mb">
-            <px-key-value-pair key="Measured Output" value="98" uom="MW" size="delta"></px-key-value-pair>
-            <px-simple-bar-chart class="u-ml++" width="100" height="50" chart-data='[ [53,122,128,120,56,94,102] ]' colors='["#E9A24B"]'></px-simple-bar-chart>
-          </div>
-          <px-gauge class="gauge4" value="[[_selectedAsset.data.measurements.3]]" unit="%" normal='[ [0,100] ]' bar-width="20"></px-gauge>
-        </div>
-      </div>
-    </px-card>
-
-    <!-- This last px-card includes a px-vis-timeseries chart -->
-    <px-card class="light-card" header-text="Exhaust TC Differentials" icon="px-fea:orchestration">
-      <div slot="actions">
-        <px-icon icon="px-utl:app-settings"></px-icon>
-      </div>
-      <div class="chart-container">
-        <px-vis-timeseries
-            debounce-resize-timing="250"
-            chart-horizontal-alignment="center"
-            chart-vertical-alignment="center"
-            register-config='{"type":"horizontal"}'
-            chart-data="[[_chartData]]"
-            series-config='{"y0":{"name":"TC01-TTXM","x":"timeStamp","y":"y0","yAxisUnit":"C"},"y1":{"name":"TC02-TTXM","x":"timeStamp","y":"y1","yAxisUnit":"C"},"y2":{"name":"TC03-TTXM","x":"timeStamp","y":"y2","yAxisUnit":"C"},"y3":{"name":"TC04-TTXM","x":"timeStamp","y":"y3","yAxisUnit":"C"}}'
-            chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}'
-            x-axis-config='{"title":"Date"}'
-            y-axis-config='{"title":"Temperature","titleTruncation":false,"unit":"C"}'>
-        </px-vis-timeseries>
-      </div>
-    </px-card>
   </template>
   <script>
     {
@@ -174,7 +105,7 @@
               observer: '_loadAssetData'
             },
             _selectedAssetRoute: Array,
-            _chartData: Array
+            _tableData: Array
           };
         }
 
@@ -207,9 +138,9 @@
           // Swap this code out with logic to load data from a real server
           // with the ssset ID in the reqest params.
           const ajax = document.createElement('iron-ajax');
-          ajax.url = '../../sample-data/dashboard-timeseries.json';
+          ajax.url = '../../sample-data/fleet.json';
           ajax.addEventListener('response', e => {
-            this._chartData = e.detail.response;
+            this._tableData = e.detail.response;
           });
           ajax.generateRequest();
         }
