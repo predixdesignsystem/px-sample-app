@@ -1,0 +1,170 @@
+[
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-compressionratio",
+    "units": "psi",
+    "reading": "0.88"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-dischargepressure",
+    "units": "psi",
+    "reading": "2.605"
+  },
+  {
+    "occurance": "2017-09-17, 19:33:51",
+    "id": "/Unit1/HRSG",
+    "point": "39VS11",
+    "meter": "crank-frame-suctionpressure",
+    "units": "m/s",
+    "reading": "18.331"
+  }
+]

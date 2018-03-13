@@ -1,0 +1,110 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link defer rel="import" href="../../../../bower_components/px-key-value-pair/px-key-value-pair.html"/>
+<link defer rel="import" href="../../../../bower_components/px-card/px-card.html"/>
+<link defer rel="import" href="../../../../bower_components/px-vis-radar/px-vis-radar.html"/>
+<link defer rel="import" href="../../../../bower_components/px-vis-polar/px-vis-polar.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../../../../css/app-shared-styles.html"/>
+
+<dom-module id="alerts-inbox-item">
+  <template>
+    <style include="app-shared-styles"></style>
+    <style>
+      *, *:before, *:after {
+        box-sizing: border-box;
+      }
+      .chart-container {
+        height: 500px;
+      }
+    </style>
+
+    <div class="heading--page u-p">[[alert.title]]</div>
+
+    <!-- Overview -->
+    <div class="layout layout--huge u-p">
+      <div class="layout__item">
+        <px-key-value-pair label="Description" value="Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam."></px-key-value-pair>
+      </div>
+      <div class="layout__item layout">
+        <px-key-value-pair class="layout__item" label="Alert ID" value="[[alert.alertId]]" size="epsilon"></px-key-value-pair>
+        <px-key-value-pair class="layout__item" label="Alert Source" value="[[alert.alertSource]]" size="epsilon"></px-key-value-pair>
+      </div>
+      <div class="layout__item layout">
+        <px-key-value-pair class="layout__item" label="Received Date/Time" value="[[alert.receivedDateTime]]" size="epsilon"></px-key-value-pair>
+        <px-key-value-pair class="layout__item" label="Case Number" value="[[alert.caseNumber]]" size="epsilon"></px-key-value-pair>
+      </div>
+    </div>
+
+    <!-- Customer information -->
+    <div class="u-p">
+      <span class="heading--subsection">Customer Information</span>
+      <div class="flex flex--row flex--wrap flex--justify">
+        <px-key-value-pair class="u-mv" label="Customer" value="[[alert.customer]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="Contract Type" value="[[alert.serialNumber]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="DLN Type" value="[[alert.dlnType]]"></px-key-value-pair>
+        <px-key-value-pair class="u-mv" label="Security" value="[[alert.model]]"></px-key-value-pair>
+      </div>
+    </div>
+
+    <!-- Evidence #1 card -->
+    <px-card class="light-card" header-text="Evidence 1" icon="px-fea:analytics">
+      <div slot="actions">
+        <px-icon icon="px-utl:app-settings"></px-icon>
+      </div>
+      <div class="chart-container">
+        <px-vis-radar
+            chart-data="[[radarChartData]]"
+            axes='["axis1","axis2","axis3","axis4","axis5"]'
+            series-key="TimeStamp"
+            hide-axis-register>
+        </px-vis-radar>
+      </div>
+    </px-card>
+
+    <!-- Evidence #2 card -->
+    <px-card class="light-card" header-text="Evidence 2" icon="px-fea:analytics">
+      <div slot="actions">
+        <px-icon icon="px-utl:app-settings"></px-icon>
+      </div>
+      <div class="chart-container">
+        <px-vis-polar
+            chart-data="[[polarChartData]]"
+            series-config="[[_polarSeriesConfig]]"
+            hide-register
+            use-degrees>
+        </px-vis-polar>
+      </div>
+    </px-card>
+  </template>
+  <script>
+    {
+      class AlertsInboxItem extends Polymer.Element {
+        static get is() { return 'alerts-inbox-item'; }
+
+        static get properties() {
+          return {
+            /** The alert to render */
+            alert: Object,
+            /** Data for the radar chart */
+            radarChartData: Array,
+            /** Data for the polar chart */
+            polarChartData: Array,
+            /** Series config for the polar chart */
+            _polarSeriesConfig: Object
+          };
+        }
+
+        constructor() {
+          super();
+          this._polarSeriesConfig = {
+            series1: { x: 'x', y: 'y0', name: 'Series 1' }
+          };
+        }
+      }
+      window.customElements.define(AlertsInboxItem.is, AlertsInboxItem);
+    }
+  </script>
+</dom-module>

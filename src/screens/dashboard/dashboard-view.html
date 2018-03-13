@@ -1,0 +1,151 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html"/>
+<link rel="import" href="../../../bower_components/px-percent-circle/px-percent-circle.html" />
+<link rel="import" href="../../../bower_components/px-data-grid/px-data-grid-paginated.html" />
+<link rel="import" href="../../../bower_components/px-context-browser/px-context-browser.html"/>
+<link rel="import" href="../../../bower_components/px-context-browser/px-context-browser-trigger.html"/>
+<link rel="import" href="../../../bower_components/px-breadcrumbs/px-breadcrumbs.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../../../css/app-shared-styles.html"/>
+<link rel="import" href="../../../css/dashboard-view-styles.html"/>
+
+<dom-module id="dashboard-view">
+  <template>
+    <style include="app-shared-styles"></style>
+    <style include="dashboard-view-styles"></style>
+
+    <!--
+      Loads the asset data from  a fake "server", which is just a .json file on
+      disk. Swap this URL for your the API service that returns your assets.
+    -->
+    <iron-ajax
+        id="ajax"
+        url="../../../sample-data/assets.json"
+        handle-as="json"
+        last-response="{{_assetItems}}">
+    </iron-ajax>
+
+    <!--
+      The px-context-browser and px-breadcrumbs can be used in combination to
+      provide both the traditional drilldown navigation as well as an
+      interactive breadcrumb for quick navigation throughout the hierarchy.
+      Place them both in a 'flex--row' container so that they appear next to
+      each other in a container.
+    -->
+    <div class="context-browser-container shadow-navigation u-ph flex flex--row flex--middle">
+      <px-context-browser-trigger trigger="{{openTrigger}}"></px-context-browser-trigger>
+      <px-context-browser
+          open-trigger="[[openTrigger]]"
+          items="{{_assetItems}}"
+          selected-route="{{_selectedAssetRoute}}"
+          selected="{{_selectedAsset}}">
+      </px-context-browser>
+      <px-breadcrumbs
+          class="flex__item"
+          items="{{_assetItems}}"
+          selected-route="{{_selectedAssetRoute}}"
+          click-only-mode>
+      </px-breadcrumbs>
+    </div>
+
+    <div>
+      <section class="u-mt u-mb++">
+        <span class="delta u-p">Production</span>
+        <div class="layout layout--huge layout--center u-mv++">
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis1" val="32" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Solar</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis2" val="24" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Wind</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis3" val="11" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Biogas</span>
+          </div>
+          <div class="text--center layout__item">
+            <px-percent-circle class="u-p++ vis4" val="67" max="100" thickness="15"></px-percent-circle>
+            <span class="epsilon caps">Total</span>
+          </div>
+        </div>
+      </section>
+      <section class="u-p">
+        <div class="flex flex--justify">
+          <span class="delta">Table Title</span>
+          <div>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:filter"></px-icon>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:edit"></px-icon>
+            <px-icon class="actionable actionable--action u-ml" icon="px-utl:help"></px-icon>
+          </div>
+        </div>
+        <px-data-grid-paginated table-data='[[_tableData]]' hide-action-menu></px-data-grid-paginated>
+      </section>
+    </div>
+
+  </template>
+  <script>
+    {
+      class DashboardView extends Polymer.Element {
+        static get is() { return 'dashboard-view'; }
+
+        static get properties() {
+          return {
+            /** Assets to display in the context browser and breadcrumbs */
+            _assetItems: {
+              type: Array,
+              observer: '_selectInitialAsset'
+            },
+            /** The selected asset. Will be used to load the data to show in the dashboard. */
+            _selectedAsset: {
+              type: Object,
+              observer: '_loadAssetData'
+            },
+            _selectedAssetRoute: Array,
+            _tableData: Array
+          };
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            // Wait until next render to load assets so we don't block
+            // render with the network request.
+            if (!this.alertItems) {
+              this.$.ajax.generateRequest();
+            }
+          });
+        }
+
+        _selectInitialAsset(nextAssets, lastAssets) {
+          if (nextAssets && !lastAssets && !this.selectedAssetRoute) {
+            // When the assets are first loaded, select a default asset.
+            // This function chooses a hard-coded asset, but you could
+            // load the user's last selected asset from the database instead.
+            this._selectedAssetRoute = ['North_America', 'United_States', 'Nevada', 'Reno_Plant_2', 'XY12367'];
+          }
+        }
+
+        _loadAssetData() {
+          // Loads data from a fake "server" (.json file on disk) when
+          // an asset is selected. Loads the same data regardless of which
+          // asset is selected.
+          //
+          // Swap this code out with logic to load data from a real server
+          // with the ssset ID in the reqest params.
+          const ajax = document.createElement('iron-ajax');
+          ajax.url = '../../sample-data/fleet.json';
+          ajax.addEventListener('response', e => {
+            this._tableData = e.detail.response;
+          });
+          ajax.generateRequest();
+        }
+      }
+      window.customElements.define(DashboardView.is, DashboardView);
+    }
+  </script>
+</dom-module>

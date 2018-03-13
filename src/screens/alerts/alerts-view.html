@@ -1,0 +1,103 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html"/>
+<link defer rel="import" href="../../../bower_components/px-inbox/px-inbox.html"/>
+<link defer rel="import" href="components/alerts-inbox-item.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../../../css/app-shared-styles.html"/>
+<link rel="import" href="../../../css/alerts-view-styles.html"/>
+
+<dom-module id="alerts-view">
+  <template>
+    <style include="app-shared-styles"></style>
+    <style include="alerts-view-styles"></style>
+
+    <!--
+      Loads the alerts data from a fake "server", which is just a .json file on
+      disk. Swap this URL for your the API service that returns your alerts.
+    -->
+    <iron-ajax
+        id="ajax"
+        url="../../../sample-data/alerts.json"
+        handle-as="json"
+        last-response="{{_alertItems}}">
+    </iron-ajax>
+
+    <px-inbox list-items="[[_alertItems]]" selected-item-ref="{{_selectedAlert}}">
+      <!--
+        Any content passed inside of the px-inbox tag is automatically inserted
+        into the right hand content side of the screen. In this case, we pass
+        the selected inbox item to a component that displays its contents.
+      -->
+      <alerts-inbox-item
+          alert="[[_selectedAlert]]"
+          radar-chart-data="[[_chartData.radarChartData]]"
+          polar-chart-data="[[_chartData.polarChartData]]">
+      </alerts-inbox-item>
+    </px-inbox>
+  </template>
+  <script>
+    {
+      class AlertsView extends Polymer.Element {
+        static get is() { return 'alerts-view'; }
+
+        static get properties() {
+          return {
+            _alertItems: Array,
+            /** The selected inbox item. Will be displayed by the alerts-inbox-item. */
+            _selectedAlert: {
+              type: Object,
+              observer: '_loadChartData'
+            },
+            /** Data for the selected inbox item's charts */
+            _chartData: Object
+          };
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            // Wait until next render to load alerts so we don't block
+            // render with the network request.
+            if (!this.alertItems) {
+              this.$.ajax.generateRequest();
+            }
+          });
+        }
+
+        _loadChartData(alert) {
+          if (alert) {
+            // Loads data from a fake "server" (.json files on disk) when
+            // an alert is selected. Loads the same data regardless of which
+            // alert is selected.
+            //
+            // Swap this code out with logic to load data from a real server
+            // with the alert ID in the reqest params.
+            const fetchJson = url => {
+              const ajax = document.createElement('iron-ajax');
+              ajax.url = url;
+              return ajax.generateRequest().completes.then(req => {
+                return Promise.resolve(req.response);
+              });
+            };
+            const dataPromises = [
+              fetchJson('../../sample-data/alert-radar-chart-data.json'),
+              fetchJson('../../sample-data/alert-polar-chart-data.json')
+            ];
+            Promise.all(dataPromises).then(data => {
+              const [radarChartData, polarChartData] = data;
+              this._chartData = {
+                radarChartData,
+                polarChartData
+              };
+            });
+          }
+        }
+      }
+      window.customElements.define(AlertsView.is, AlertsView);
+    }
+  </script>
+</dom-module>

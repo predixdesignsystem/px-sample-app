@@ -80,9 +80,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/docs', require('./docs')(config));
 
+const publicRoute = (node_env === 'development') ?
+  path.resolve(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../') :
+  path.resolve(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '..', 'build', 'default');
+
 if (!config.isUaaConfigured()) {
   // no restrictions
-  app.use(express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../')));
+  app.use(express.static(publicRoute));
 
   // mock UAA routes
   app.get(['/login', '/logout'], function(req, res) {
@@ -138,7 +142,7 @@ if (!config.isUaaConfigured()) {
   app.use('/', passport.authenticate('main', {
     noredirect: false //Don't redirect a user to the authentication page, just show an error
   }),
-    express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../'))
+    express.static(publicRoute)
   );
 
   //Or you can follow this pattern to create secure routes,

@@ -1,22 +1,20 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/px-sample-app.html",
+  "shell": "src/app-shell.html",
   "fragments": [
-    "src/px-sample-dashboard.html",
-    "src/px-sample-inbox.html",
-    "src/px-sample-layout.html"
+    "src/screens/dashboard/dashboard-view.html",
+    "src/screens/alerts/alerts-view.html",
+    "src/screens/analytics/analytics-view.html"
   ],
   "sources": [
     "src/**/*",
     "bower.json"
   ],
   "extraDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+    "sample-data/**/*",
+    "bower_components/webcomponentsjs/webcomponents-loader.js",
     "bower_components/px-theme/px-theme-styles.html",
     "bower_components/px-dark-theme/px-dark-theme-styles.html",
-    "bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html",
-    "bower_components/px-demo/px-demo-theme-switcher.html",
-    "bower_components/px-demo/px-demo-theme-util.html",
     "bower_components/px-vis/px-vis-worker.js",
     "bower_components/px-vis/px-vis-worker-scale.js",
     "favicon.ico"

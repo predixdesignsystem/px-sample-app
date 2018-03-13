@@ -1,0 +1,192 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
+
+<!-- Components -->
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html"/>
+<link defer rel="import" href="../../../bower_components/iron-pages/iron-pages.html"/>
+<link defer rel="import" href="../../../bower_components/px-tabs/px-tabs.html"/>
+<link defer rel="import" href="../../../bower_components/px-key-value-pair/px-key-value-pair.html"/>
+<link defer rel="import" href="../../../bower_components/px-icon-set/px-icon.html"/>
+<link defer rel="import" href="../../../bower_components/px-icon-set/px-icon-set.html"/>
+<link defer rel="import" href="../../../bower_components/px-dropdown/px-dropdown.html"/>
+<link defer rel="import" href="../../../bower_components/px-data-grid/px-data-grid.html"/>
+<link defer rel="import" href="../../../bower_components/px-kpi/px-kpi-list.html"/>
+
+<!-- Styles -->
+<link rel="import" href="../../../css/app-shared-styles.html"/>
+
+<dom-module id="analytics-view">
+  <template>
+    <style include="app-shared-styles"></style>
+
+    <!--
+      Loads the fleet data from a fake "server", which is just a .json file on
+      disk. Swap this URL for your the API service that returns your fleet data.
+    -->
+    <iron-ajax
+        id="ajax"
+        url="../../../sample-data/fleet.json"
+        handle-as="json"
+        last-response="{{_fleetData}}">
+    </iron-ajax>
+
+    <div class="spine">
+
+      <section class="u-p+ u-mb++">
+        <div class="flex flex--justify flex--wrap">
+          <div class="flex flex--middle u-mb">
+            <span class="heading--page u-mr">Analysis Details</span>
+            <px-icon class="u-mr" icon="px-fea:dashboard"></px-icon>
+            <px-icon class="u-mr" icon="px-fea:asset"></px-icon>
+          </div>
+          <div class="flex flex--middle u-mb">
+            <px-icon class="u-mr" icon="px-nav:notification"></px-icon>
+            <px-dropdown button-style="tertiary" display-value="Action"></px-dropdown>
+          </div>
+        </div>
+        <div>Secondary Information</div>
+        <div>Supplemental Information</div>
+      </section>
+
+      <px-tabs selected="{{_selected}}">
+        <px-tab id='tab1'>Overview</px-tab>
+        <px-tab id='tab2'>Details</px-tab>
+      </px-tabs>
+
+    </div>
+
+    <iron-pages selected="[[_selected]]">
+
+      <!-- Contents of first tab -->
+      <div class="u-p+">
+        <span class="heading--section">Alert Details</span>
+
+        <div class="layout layout--huge u-mv++">
+          <px-key-value-pair class="layout__item" label="Alert ID" value="749581"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Alert Source" value="Combustion"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Received Date/Time" value="2016-10-05T08:00"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Case Number" value="127587698"></px-key-value-pair>
+        </div>
+
+        <span class="heading--section">Asset Details</span>
+
+        <div class="layout layout--huge u-mv++">
+          <px-key-value-pair class="layout__item" label="Customer" value="Dorothy Vaughn"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Contract Type" value="GT759374"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="DLN Type" value="DLN 2.6"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Security" value="7FA+e"></px-key-value-pair>
+        </div>
+
+        <div class="layout layout--huge u-mv++">
+          <px-key-value-pair class="layout__item" label="Label" value="Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor."></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Label" value="Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor."></px-key-value-pair>
+        </div>
+
+        <div class="flex flex--justify">
+          <span class="heading--section">Analysis</span>
+          <px-icon class="actionable actionable--action" icon="px-utl:add"></px-icon>
+        </div>
+
+        <px-data-grid table-data='[[_fleetData]]' columns='[[_fleetColumns]]' hide-action-menu></px-data-grid>
+
+      </div>
+      <!-- End first tab -->
+
+      <!-- Contents of second tab -->
+      <div class="u-p+">
+
+        <span class="heading--section">Asset Details</span>
+        <div class="layout layout--huge u-mv++">
+          <px-key-value-pair class="layout__item" label="Alert ID" value="749581"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Alert Source" value="Combustion"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Received Date/Time" value="2016-10-05T08:00"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Case Number" value="127587698"></px-key-value-pair>
+          <px-key-value-pair class="layout__item" label="Customer" value="Dorothy Vaughn"></px-key-value-pair>
+        </div>
+
+        <span class="heading--subsection u-mv++">Key Performance Indicators</span>
+        <div class="layout layout--huge u-mv++">
+          <px-kpi-list class="layout__item" label="Asset 153" status-icon="px-nav:up" status-color="green" status-label="30%" footer="Last 30 days" values='[{"label": "Availability","value": "96","uom": "%"}, {"label": "Reliability","value": "98","uom": "%"}, {"label": "Starts","value": "15","uom": ""}, {"label": "Faults","value": "2","uom": ""}, {"label": "Alerts","value": "5","uom": ""}]'></px-kpi-list>
+          <px-kpi-list class="layout__item" label="Asset 682" status-icon="px-nav:down" status-color="red" status-label="85%" footer="Last 30 days" values='[{"label": "Availability","value": "87","uom": "%"}, {"label": "Reliability","value": "100","uom": "%"}, {"label": "Starts","value": "28","uom": ""}, {"label": "Faults","value": "0","uom": ""}, {"label": "Alerts","value": "3","uom": ""}]'></px-kpi-list>
+          <px-kpi-list class="layout__item" label="Asset 068" status-icon="px-nav:up" status-color="green" status-label="96%" footer="Last 30 days" values='[{"label": "Availability","value": "93","uom": "%"}, {"label": "Reliability","value": "97","uom": "%"}, {"label": "Starts","value": "35","uom": ""}, {"label": "Faults","value": "3","uom": ""}, {"label": "Alerts","value": "0","uom": ""}]'></px-kpi-list>
+        </div>
+
+      </div>
+      <!-- End second tab -->
+
+    </iron-pages>
+  </template>
+  <script>
+    {
+      class AnalyticsView extends Polymer.Element {
+        static get is() { return 'analytics-view'; }
+
+        static get properties() {
+          return {
+            _fleetData: Array,
+            /** Configures columns for the fleet data grid */
+            _fleetColumns: Array,
+            _selected: {
+              type: Number,
+              value: 0
+            }
+          };
+        }
+
+        constructor() {
+          super();
+          this._fleetColumns = [
+            {
+              name: 'Last Occurance',
+              path: 'occurance',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Asset Path',
+              path: 'id',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Point',
+              path: 'point',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Meter',
+              path: 'meter',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Units',
+              path: 'units',
+              type: 'string',
+              renderer: 'px-data-grid-string-renderer'
+            },
+            {
+              name: 'Current Reading',
+              path: 'reading',
+              type: 'number',
+              renderer: 'px-data-grid-number-renderer'
+            }
+          ];
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            // Wait until next render to load fleet data so we don't block
+            // render with the network request.
+            if (!this.alertItems) {
+              this.$.ajax.generateRequest();
+            }
+          });
+        }
+      }
+      window.customElements.define(AnalyticsView.is, AnalyticsView);
+    }
+  </script>
+</dom-module>
