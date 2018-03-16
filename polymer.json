@@ -11,7 +11,7 @@
     "bower.json"
   ],
   "extraDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+    "bower_components/webcomponentsjs/webcomponents-lite.js",
     "bower_components/px-theme/px-theme-styles.html",
     "bower_components/px-dark-theme/px-dark-theme-styles.html",
     "bower_components/px-dark-demo-theme/px-dark-demo-theme-styles.html",
