@@ -61,5 +61,6 @@
     "polyserve": "^0.19.1",
     "request": "^2.81.0",
     "url": "^0.11.0"
-  }
+  },
+  "license": "BSD-3-Clause"
 }
