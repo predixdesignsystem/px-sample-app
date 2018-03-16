@@ -37,5 +37,6 @@
     "px-helpers-design": "^1.0.3",
     "px-widths-responsive-design": "^1.0.2",
     "px-actionable-design": "^2.0.4"
-  }
+  },
+  "license": "BSD-3-Clause"
 }
