@@ -1,6 +1,6 @@
 {
   "name": "px-sample-app",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "index.html",
   "dependencies": {
     "polymer": "^2.0.0",
@@ -17,11 +17,11 @@
     "px-dark-theme": "^2.0.14",
     "px-dark-demo-theme": "^2.0.0",
     "px-gauge": "^2.0.2",
-    "px-vis-timeseries": "^3.1.2",
-    "px-vis-radar": "^3.1.1",
-    "px-vis-polar": "^3.1.1",
+    "px-vis-timeseries": "^4.0.0",
+    "px-vis-radar": "^4.0.0",
+    "px-vis-polar": "^4.0.0",
     "px-datetime-picker": "^2.0.0",
-    "px-data-grid": "https://github.com/vaadin/px-data-grid.git"
+    "px-data-grid": "^1.0.0"
   },
   "devDependencies": {
     "webcomponentsjs": "^1.0.0",
@@ -38,5 +38,10 @@
     "px-widths-responsive-design": "^1.0.2",
     "px-actionable-design": "^2.0.4"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "resolutions": {
+    "px-vis": "^5.0.0",
+    "px-d3-imports": "^3.0.0",
+    "pxd3": "^5.0.0"
+  }
 }
