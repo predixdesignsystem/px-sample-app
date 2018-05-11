@@ -35,6 +35,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const cache = require('gulp-cached');
 const clean = require('gulp-clean');
 const exec = require('child_process').exec;
+const { ensureLicense } = require('ensure-px-license');
 
 const sassOptions = {
   importer: importOnce,
@@ -76,6 +77,7 @@ gulp.task('sass', function() {
         return path.basename(file.path, path.extname(file.path)) + '-styles';
       }
     }))
+    .pipe(ensureLicense())
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream({match: 'css/*.html'}));
 });
@@ -140,8 +142,14 @@ gulp.task('bump:major', function(){
   .pipe(gulp.dest('./'));
 });
 
+gulp.task('license', function() {
+  return gulp.src(['./**/*.{html,js,css,scss}', '!./node_modules/**/*', '!./bower_components?(-1.x)/**/*'])
+    .pipe(ensureLicense())
+    .pipe(gulp.dest('.'));
+});
+
 gulp.task('default', function(callback) {
-  gulpSequence('clean', 'sass', 'transpile')(callback);
+  gulpSequence('clean', 'sass', 'transpile', 'license')(callback);
 });
 
 gulp.task('polymer:cli', function (cb) {
@@ -155,7 +163,7 @@ gulp.task('polymer:cli', function (cb) {
 gulp.task('clean', function(){
 	gulp.src('dist', {read: false})
       .pipe(clean());
-})
+});
 
 gulp.task('copy', function(){
 	var outputDir = './dist';
@@ -169,9 +177,10 @@ gulp.task('copy', function(){
 
 gulp.task('dist', function(cb) {
 	gulpSequence(
-		'clean', 
-		'transpile', 
-		'polymer:cli',
+		'clean',
+		'transpile',
+    'polymer:cli',
+    'license',
 		'copy'
 	)(cb);
 });

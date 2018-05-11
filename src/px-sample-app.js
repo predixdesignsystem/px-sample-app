@@ -1,4 +1,4 @@
-/**
+"use strict";/**
  * @license
  * Copyright (c) 2018, General Electric
  *
@@ -13,9 +13,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-"use strict";(function(){Polymer({is:"px-sample-app",properties:{/**
+ */(function(){Polymer({is:"px-sample-app",properties:{/**
        * Used by the px-app-nav to automatically select the first item.
        * @property selected
        */selected:{type:Array,value:function value(){return["dashboard"]}},/**
